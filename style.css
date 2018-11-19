@@ -1,0 +1,85 @@
+/* fonts  */
+  
+body {
+    font-family: 'Verdana', sans-serif;
+}
+  
+p {
+    font-family: "Georgia", serif;
+    line-height: 1.4em;
+}
+  
+header h2 {
+    font-size: 1em;
+}
+  
+header a {
+    font-size: 0.8em;
+}
+  
+/* header */
+
+body > header {
+    background-color: #ff8b06;
+    color: black;
+    border-radius: 0.3em;
+    padding: 1em;
+  }
+
+body > header h1, body > header h2{
+    margin: 0;
+}
+  
+body > header a {
+    color: black;
+    text-decoration: none;  
+}
+  
+/* navigation */
+  
+#menu ul {
+    margin: 0;
+    padding: 0;
+}
+  
+#menu li {
+    background-color: white;
+    text-align: center;
+  
+    list-style-type: none;
+  
+    padding: 1em 6em;
+}
+  
+#menu li a{
+    color: black;
+    text-decoration: none;
+}
+  
+#menu li:hover {
+    background-color: #2a2f33;
+}
+  
+#menu li:hover a{
+    color: white;
+}
+
+body > nav > ul{
+    display: flex;
+    justify-content: space-between;
+}
+  
+
+
+
+/* footer */
+  
+body > footer {
+    background-color: #2a2f33;
+    color: white;  
+    padding: 0.5em;
+}
+  
+body > footer p {
+    margin: 0;
+}  
