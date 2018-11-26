@@ -20,7 +20,7 @@ header a {
 /* header */
 
 body > header {
-    background-color: #ff8b06;
+    background-color: #370685;
     color: black;
     border-radius: 0.3em;
     padding: 1em;
@@ -31,7 +31,7 @@ body > header h1, body > header h2{
 }
   
 body > header a {
-    color: black;
+    color: rgb(255, 255, 255);
     text-decoration: none;  
 }
   
@@ -48,7 +48,7 @@ body > header a {
   
     list-style-type: none;
   
-    padding: 1em 6em;
+    padding: 1em 0;
 }
   
 #menu li a{
@@ -64,7 +64,12 @@ body > header a {
     color: white;
 }
 
+/* aside */
 
+body > aside > div{
+    margin: 1em;
+    background-color: aqua;
+}
 
 
 /* footer */

@@ -7,35 +7,55 @@ PRAGMA foreign_keys = ON;
 CREATE TABLE User(
     idUser INTEGER PRIMARY KEY,
     username TEXT NOT NULL,
-    age INTEGER,
-    n_points INTEGER NOT NULL
+    --Save here? -> hashedPass TEXT NOT NULL,
+    email TEXT NOT NULL,
+    age INTEGER
+
+    
+    --TODO
+);
+
+-- Super class for Stories and Comments
+CREATE TABLE Commentable(
+    idCommentable INTEGER PRIMARY KEY,
+    textC TEXT NOT NULL,
+    dateC DATE NOT NULL,
+    
+    --n_upvotes INTEGER NOT NULL,
+    --n_downvotes INTEGER NOT NULL,
+    
+    idUser INTEGER REFERENCES User(idUser)
+
+    
     --TODO
 );
 
 CREATE TABLE Story(
     idStory INTEGER PRIMARY KEY,
-    text TEXT NOT NULL,
-    date DATE NOT NULL,
-    n_upvotes INTEGER NOT NULL,
-    n_downvotes INTEGER NOT NULL,
-    idUser INTEGER REFERENCES User(idUser)
+
+    -- Maybe have an image?
+
+    FOREIGN KEY (idStory) REFERENCES Commentable(idCommentable)
     --TODO
 );
 
 CREATE TABLE Comment(
     idComment INTEGER PRIMARY KEY,
-    text TEXT NOT NULL,
-    date DATE NOT NULL,
-    n_upvotes INTEGER NOT NULL,
-    n_downvotes INTEGER NOT NULL,
-    idUser INTEGER REFERENCES User(idUser),
-    idStory INTEGER REFERENCES Story(idStory)
+
+    FOREIGN KEY (idComment) REFERENCES Commentable(idCommentable)
+
+    -- Pointer to Commentable maybe? 
+
     --TODO
 );
 
+
+/*
 CREATE TABLE Comment_Relat(
     idChild INTEGER PRIMARY KEY,
     idParent INTEGER REFERENCES Comment(idComment),
     FOREIGN KEY (idChild) REFERENCES Comment(idComment)
     --TODO
 );
+*/
+
