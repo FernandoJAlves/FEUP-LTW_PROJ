@@ -64,11 +64,6 @@ body > header a {
     color: white;
 }
 
-body > nav > ul{
-    display: flex;
-    justify-content: space-between;
-}
-  
 
 
 
