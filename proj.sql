@@ -7,7 +7,7 @@ PRAGMA foreign_keys = ON;
 CREATE TABLE User(
     idUser INTEGER PRIMARY KEY,
     username TEXT NOT NULL,
-    --Save here? -> hashedPass TEXT NOT NULL,
+    hashedPass TEXT NOT NULL,
     email TEXT NOT NULL,
     age INTEGER
 
