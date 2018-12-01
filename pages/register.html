@@ -3,9 +3,10 @@
   <head>
     <title>GameIt</title>    
     <meta charset="UTF-8">
+    <link rel="shortcut icon" href="../img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="style.css" rel="stylesheet">
-    <link href="layout.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/layout.css" rel="stylesheet">
     <!--<link rel="shortcut icon" href="./favicon.ico"/>-->
   </head>
   <body>
@@ -25,23 +26,15 @@
       </ul>
     </nav>
     <section id="page_content">
-        <form action="regist.php" method="get">
+        <form action="register.php" method="post">
             Username: <input type="text" name="name"><br>
+            Age: <input type="text" name="age"><br>
             E-mail: <input type="text" name="email"><br>
-            Password: <input type="text" name="pass"><br>
-            Confirm Password: <input type="text" name="conf"><br>
-            <input type="submit">
+            Password: <input type="password" name="pass"><br>
+            Confirm Password: <input type="password" name="conf"><br>
+            <input type="submit" value="Sign Up">
         </form>      
     </section>
-    <aside>
-      <div id="create_post">
-        <a href="create_post.html">Create a post</a>
-      </div>
-
-      <div id="links">
-        <a href="home.html">Home</a>
-      </div>
-    </aside>
     <footer>
       <p>&copy; GameIt, 2018/2019</p>
     </footer>

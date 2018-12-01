@@ -1,13 +1,8 @@
-.mode columns
-.headers on
 
-PRAGMA foreign_keys = ON;
---db.execSQL(ENABLE_FOREIGN_KEYS);
-
-CREATE TABLE User(
-    idUser INTEGER PRIMARY KEY,
+CREATE TABLE GameItUser (
+    iduser INTEGER NOT NULL PRIMARY KEY,
     username TEXT NOT NULL,
-    hashedPass TEXT NOT NULL,
+    pass TEXT NOT NULL,
     email TEXT NOT NULL,
     age INTEGER
 
@@ -24,7 +19,7 @@ CREATE TABLE Commentable(
     --n_upvotes INTEGER NOT NULL,
     --n_downvotes INTEGER NOT NULL,
     
-    idUser INTEGER REFERENCES User(idUser)
+    idUser INTEGER REFERENCES GameItUser (iduser)
 
     
     --TODO
