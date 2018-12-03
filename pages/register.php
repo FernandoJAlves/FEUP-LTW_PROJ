@@ -1,6 +1,9 @@
 <?php
 
   include_once('../database/dbUsers.php');
+  include_once('../includes/session.php');
+
+
     $name = $_POST['name'];
     $email = $_POST['email'];
     $pass = $_POST['pass'];
@@ -27,9 +30,10 @@
         $insert = insertUser($name,$pass,$email,$age);
          
         if($insert){
-          echo"<script language='javascript' type='text/javascript'>alert('Registo efectuado com sucesso!');";
+          $_SESSION['username'] = $username;
+          $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Signed up and logged in!');
         }else{
-          echo"<script language='javascript' type='text/javascript'>alert('Não foi possível efectuar o registo');";
+          $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to signup!');
         }
         header('Location: ../pages/home.html');
  
