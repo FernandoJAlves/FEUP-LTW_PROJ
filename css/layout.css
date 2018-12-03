@@ -1,12 +1,16 @@
 
-body > nav > ul{
+/* navigation */
+
+body > nav{
     display: flex;
 }
 
-body > nav li {
-    flex: 1;
+body > nav li{
+    /*flex: 1;*/
 }
  
+/* grid */
+
 body {
     background-color: #edeff0;
   
@@ -15,7 +19,6 @@ body {
   
     display: grid;
 }
-
 
 body > header {
     grid-area: 1 / 1 / span 1 / span 2;
@@ -34,3 +37,12 @@ body > footer {
 }
 
 
+/* login */
+
+body > header div#signup{
+    display: flex;
+}
+
+body > header div#signup div{
+    flex: 1;
+}

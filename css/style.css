@@ -31,38 +31,47 @@ body > header h1, body > header h2{
 }
   
 body > header a {
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     text-decoration: none;  
 }
-  
+
+body > header div#signup div{
+    background-color: rgb(255, 255, 255);
+    margin: 1em;
+    padding: 1em;
+    text-align: center;
+    border-radius: 0.3em;
+    border-color: black;
+    border-style: solid;
+}
+
+
 /* navigation */
   
-#menu ul {
-    margin: 0;
-    padding: 0;
-}
   
-#menu li {
+#menu {
     background-color: white;
     text-align: center;
-  
     list-style-type: none;
-  
-    padding: 1em 0;
 }
   
-#menu li a{
+#menu a{
     color: black;
-    text-decoration: none;
+	text-decoration: none;
+	padding: 1em 0;
+	flex-grow: 0.35;
 }
   
-#menu li:hover {
-    background-color: #2a2f33;
+
+#menu a:hover {
+	color: white;
+	background-color: #2a2f33;
+	transition: 0.5s;
 }
-  
-#menu li:hover a{
-    color: white;
-}
+
+
+
+
 
 /* aside */
 
@@ -81,9 +90,14 @@ body > aside a{
 }
 
 body > aside div#create_post{
-    background-color: aqua;
+    background-color: rgb(0, 132, 255);
 }
 
+/*
+TODO
+body > aside div#links{
+    background-color: rgb(0, 132, 255);
+}*/
 
 /* footer */
   
