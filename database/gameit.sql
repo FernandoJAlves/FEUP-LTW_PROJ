@@ -1,12 +1,11 @@
 
 CREATE TABLE GameItUser (
-    iduser INTEGER NOT NULL PRIMARY KEY,
+    idUser INTEGER NOT NULL PRIMARY KEY,
     username TEXT NOT NULL,
     pass TEXT NOT NULL,
     email TEXT NOT NULL,
     age INTEGER
 
-    
     --TODO
 );
 
@@ -16,12 +15,11 @@ CREATE TABLE Commentable(
     textC TEXT NOT NULL,
     dateC DATE NOT NULL,
     
-    --n_upvotes INTEGER NOT NULL,
-    --n_downvotes INTEGER NOT NULL,
+    --n_upvotes INTEGER NOT NULL,  ->  trigger
+    --n_downvotes INTEGER NOT NULL,  ->  trigger
     
-    idUser INTEGER REFERENCES GameItUser (iduser)
+    idUser INTEGER REFERENCES GameItUser (idUser)
 
-    
     --TODO
 );
 
@@ -39,18 +37,17 @@ CREATE TABLE Comment(
 
     FOREIGN KEY (idComment) REFERENCES Commentable(idCommentable)
 
-    -- Pointer to Commentable maybe? 
-
     --TODO
 );
 
 
-/*
-CREATE TABLE Comment_Relat(
-    idChild INTEGER PRIMARY KEY,
-    idParent INTEGER REFERENCES Comment(idComment),
-    FOREIGN KEY (idChild) REFERENCES Comment(idComment)
+CREATE TABLE UserVote(
+    PRIMARY KEY (idUser, idCommentable),
+
+    voteVal INTEGER, -- either 1 or -1
+
+    idUser INTEGER REFERENCES GameItUser(idUser),
+    idCommentable INTEGER REFERENCES GameItUser(idCommentable)
     --TODO
 );
-*/
 
