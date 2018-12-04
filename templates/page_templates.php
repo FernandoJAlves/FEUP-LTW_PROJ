@@ -1,4 +1,9 @@
-<?php function draw_template($username) { 
+<?php
+  include_once('../includes/session.php');
+?>
+
+
+<?php function draw_header($username) { 
 /**
  * Draws the header for all pages. Receives an username
  * if the user is logged in in order to draw the logout
@@ -32,16 +37,59 @@
           <a href="hot.html">Hot Section</a>
           <a href="contro.html">Controversial Section</a>
       </nav>
-      <section id="page_content">
+
+<?php } ?>
+
+
+<?php function draw_home() {
+
+?>
+    <section id="home_content">
+      <article>
+        <h1>GameIt</h1>
+        <p>This website focuses on discussions about video games. Please don't be rude to other users</p>
+      </article>        
+    </section>
+
+
+<?php } ?>
+
+<?php function draw_login() {
+
+?>
+
+       <section id="login_content">
           <form action="login.php" method="post">
               Username: <input type="text" name="name"><br>
               Password: <input type="password" name="pass"><br>
               <input type="submit" value="Sign In">
           </form>      
       </section>
-      <footer>
-        <p>&copy; GameIt, 2018/2019</p>
-      </footer>
-    </body>
-  </html>
+<?php } ?>
+
+
+<?php function draw_register() {
+
+?>
+    <section id="register_content">
+        <form action="../actions/action_register.php" method="post">
+            <div>Username: <input type="text" name="name"><br></div>
+            <div>Age: <input type="text" name="age"><br></div>
+            <div>E-mail: <input type="text" name="email"><br></div>
+            <div>Password: <input type="password" name="pass"><br></div>
+            <div>Confirm Password: <input type="password" name="conf"><br></div>
+            <input type="submit" value="Sign Up">
+        </form>      
+    </section>
+<?php } ?>
+
+<?php function draw_footer() {
+
+?>
+          <footer>
+          <p>&copy; GameIt, 2018/2019</p>
+        </footer>
+      </body>
+    </html>
+
 <?php } ?>
