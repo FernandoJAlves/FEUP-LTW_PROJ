@@ -21,21 +21,32 @@
     </head>
     <body>
       <header>
-        <h1><a href="home.html">GameIt</a></h1>
+        <h1><a href="home.php">GameIt</a></h1>
+        <?php if ($username == NULL) { ?>
         <div id="signup">
           <div>
-          <a href="register.html">Register</a>
+          <a href="register.php">Register</a>
           </div>
           <div>
-          <a href="login.html">Login</a>
+          <a href="login.php">Login</a>
+          </div>
+        <?php } 
+        else { ?>
+        <div id="session">
+          <div>
+          <a href="profile.php"><?= $username?></a>
+          </div>
+          <div>
+          <a href="../actions/action_logout.php">Logout</a>
           </div>
         </div>
+        <?php } ?>
       </header>
       <nav id="menu">
-          <a href="home.html">Home</a>
-          <a href="recent.html">Recent Section</a>
-          <a href="hot.html">Hot Section</a>
-          <a href="contro.html">Controversial Section</a>
+          <a href="home.php">Home</a>
+          <a href="recent.php">Recent Section</a>
+          <a href="hot.php">Hot Section</a>
+          <a href="contro.php">Controversial Section</a>
       </nav>
 
 <?php } ?>
@@ -59,7 +70,7 @@
 ?>
 
        <section id="login_content">
-          <form action="login.php" method="post">
+          <form action="../actions/action_login.php" method="post">
               Username: <input type="text" name="name"><br>
               Password: <input type="password" name="pass"><br>
               <input type="submit" value="Sign In">

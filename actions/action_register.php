@@ -17,11 +17,11 @@
     
     if($name == "" || $name == null){
         echo"<script language='javascript' type='text/javascript'>alert('username field must not be empty');</script>";
-        header('Location: ../pages/register.html');
+        header('Location: ../pages/register.php');
     }
     else if($pass != $conf){
         echo"<script language='javascript' type='text/javascript'>alert('the value of password is different');</script>";
-        header('Location: ../pages/register.html');
+        header('Location: ../pages/register.php');
     }
 
     else{
