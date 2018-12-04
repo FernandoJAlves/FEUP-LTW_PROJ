@@ -1,19 +1,3 @@
-<?php
-  include_once('../database/dbUsers.php');
-  include_once('../includes/session.php');
-  $username = $_POST['name'];
-  $password = $_POST['pass'];
-  if (checkUserPassword($username, $password)) {
-    $_SESSION['username'] = $username;
-    $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Logged in successfully!');
-    header('Location: ../pages/home.html');
-  } else {
-    $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Login failed!');
-    header('Location: ../pages/login.html');
-  }
-?>
-
-
 <?php function draw_template($username) { 
 /**
  * Draws the header for all pages. Receives an username
@@ -29,7 +13,6 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link href="../css/style.css" rel="stylesheet">
       <link href="../css/layout.css" rel="stylesheet">
-      <!--<link rel="shortcut icon" href="./favicon.ico"/>-->
     </head>
     <body>
       <header>
