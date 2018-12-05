@@ -11,7 +11,7 @@
     $age = $_POST['age'];
 
     if ( !preg_match ("/^[a-zA-Z0-9]+$/", $name)) {
-      die(header('Location: ../pages/register.html'));
+      die(header('Location: ../pages/register.php'));
     }
 
     
@@ -35,12 +35,12 @@
         }else{
           $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to signup!');
         }
-        header('Location: ../pages/home.html');
+        header('Location: ../pages/home.php');
  
       }
       else{
         echo"<script language='javascript' type='text/javascript'>alert('That username already exists');</script>";
-        header('Location: ../pages/register.html');
+        header('Location: ../pages/register.php');
       }
     }
 
