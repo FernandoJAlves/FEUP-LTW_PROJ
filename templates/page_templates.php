@@ -94,6 +94,22 @@
     </section>
 <?php } ?>
 
+
+<?php function draw_profile($user) {
+
+?>
+    <section id="profile_content">
+      <article>
+        <h1><?=$user['username']?></h1>
+        <img src = "../img/generic.png" alt="Excuse">
+        <p>E-mail Address: <?=$user['email']?></p>
+        <p>Age: <?=$user['age']?></p>
+      </article>        
+    </section>
+
+
+<?php } ?>
+
 <?php function draw_footer() {
 
 ?>

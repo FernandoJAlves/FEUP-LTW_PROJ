@@ -28,4 +28,12 @@
     return $value;
   }
 
+  function getUser($username) {
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('SELECT * FROM GameItUser WHERE username = ?');
+    $stmt->execute(array($username));
+    $user = $stmt->fetch();
+    return $user;
+  }
+
 ?>
