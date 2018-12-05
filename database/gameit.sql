@@ -1,9 +1,4 @@
-.mode columns
-.headers on
-.nullvalue NULL
-.width auto auto auto auto auto auto
 
-PRAGMA foreign_keys = ON;
 
 DROP TABLE IF EXISTS Story;
 DROP TABLE IF EXISTS Comment;

@@ -2,10 +2,13 @@
 
 ?>
     <section id="stories_content">
-        <?php for($i = 0; $i < 10 && $i < count($stories); $i++){ ?>
+        <?php foreach ($stories as $story){ ?>
         <div>
-            <p><?=$stories[$i]['textC']?> <br></p>
-            <p><?=$stories[$i]['dateC']?><br></p>
+            <p><?=$story['title']?> <br></p>
+            <p><?=$story['textC']?><br></p>
+            <p>Published: <?=$story['dateC']?><br></p>
+            <p><?=$story['N_Comments']?> Comments<br></p>
+            <br>
         </div>      
         <?php } ?>
     </section>
