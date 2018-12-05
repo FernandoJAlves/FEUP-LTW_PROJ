@@ -18,8 +18,8 @@ CREATE TABLE GameItUser(
     username TEXT NOT NULL,
     pass TEXT NOT NULL,
     email TEXT NOT NULL,
-    age INTEGER NOT NULL, -- ^ Campos obrigatorio
-    descriptionUser TEXT -- Campo não obrigatorio
+    age INTEGER NOT NULL -- ^ Campos obrigatorio
+    --descriptionUser TEXT -- Campo não obrigatorio
 
     --n_points INTEGER NOT NULL,  ->  trigger
 );
@@ -68,9 +68,9 @@ CREATE TABLE UserVote(
     --TODO
 );
 
-insert into GameItUser values (1,"Nando","12345","mail@mail.com",20, "Likes to run");
-insert into GameItUser values (2,"Juan","qwerty","mymail@mail.com",20, "Likes to sleep");
-insert into GameItUser values (3,"Carlitos","password","nomail@mail.com",20, "Likes to stream");
+insert into GameItUser values (1,"Nando","12345"/*,"mail@mail.com"*/,20, "Likes to run");
+insert into GameItUser values (2,"Juan","qwerty"/*,"mymail@mail.com"*/,20, "Likes to sleep");
+insert into GameItUser values (3,"Carlitos","password"/*,"nomail@mail.com"*/,20, "Likes to stream");
 
 -- SELECT * FROM GameItUser;
 
