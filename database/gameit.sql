@@ -14,9 +14,8 @@ CREATE TABLE GameItUser(
     pass TEXT NOT NULL,
     email TEXT NOT NULL,
     age INTEGER NOT NULL, -- ^ Campos obrigatorio
-    descriptionUser TEXT -- Campo não obrigatorio
-
-    --n_points INTEGER NOT NULL,  ->  trigger
+    descriptionUser TEXT, -- Campo não obrigatorio
+    n_points INTEGER NOT NULL  --   ->  trigger
 );
 
 -- Super class for Stories and Comments
@@ -24,23 +23,16 @@ CREATE TABLE Commentable(
     idCommentable INTEGER NOT NULL PRIMARY KEY,
     textC TEXT NOT NULL,
     dateC DATE NOT NULL,
-    
-    --n_upvotes INTEGER NOT NULL,  ->  trigger
-    --n_downvotes INTEGER NOT NULL,  ->  trigger
-    
-    idUser INTEGER REFERENCES GameItUser(idUser)
-
-    --TODO
+    idUser INTEGER REFERENCES GameItUser(idUser),
+    n_upvotes INTEGER NOT NULL,  --   ->  trigger
+    n_downvotes INTEGER NOT NULL  --   ->  trigger
 );
 
 CREATE TABLE Story(
     idStory INTEGER PRIMARY KEY,
     title TEXT NOT NULL,
-
-    -- Maybe have an image?
-
+    -- TODO Maybe have an image?
     FOREIGN KEY (idStory) REFERENCES Commentable(idCommentable)
-    --TODO
 );
 
 CREATE TABLE Comment(
@@ -49,8 +41,6 @@ CREATE TABLE Comment(
 
     FOREIGN KEY (idComment) REFERENCES Commentable(idCommentable),
     FOREIGN KEY (idParent) REFERENCES Commentable(idCommentable)
-
-    --TODO
 );
 
 
@@ -60,27 +50,26 @@ CREATE TABLE UserVote(
     idUser INTEGER REFERENCES GameItUser(idUser),
     idCommentable INTEGER REFERENCES Commentable(idCommentable),
     PRIMARY KEY (idUser, idCommentable)
-    --TODO
 );
 
-insert into GameItUser values (1,"Nando","12345","mail@mail.com",20, "Likes to run");
-insert into GameItUser values (2,"Juan","qwerty","mymail@mail.com",20, "Likes to sleep");
-insert into GameItUser values (3,"Carlitos","password","nomail@mail.com",20, "Likes to stream");
+insert into GameItUser values (1,"Nando","12345","mail@mail.com",20, "Likes to run",0);
+insert into GameItUser values (2,"Juan","qwerty","mymail@mail.com",20, "Likes to sleep",0);
+insert into GameItUser values (3,"Carlitos","password","nomail@mail.com",20, "Likes to stream",0);
 
 -- SELECT * FROM GameItUser;
 
 -- SELECT * FROM GameItUser WHERE idUser = 1;
 
 
-insert into Commentable values (1, "Hoje chumbei a PLOG", Date('2018-12-05 12:00'), 1);
-insert into Commentable values (2, "Eu tambem e adorei", Date('2018-12-05 12:09'), 2);
-insert into Commentable values (3, "Para o ano ha mais", Date('2018-12-05 12:12'), 1);
-insert into Commentable values (4, "Tamos juntos", Date('2018-12-05 12:14'), 3);
-insert into Commentable values (5, "Siga entao", Date('2018-12-05 12:17'), 1);
+insert into Commentable values (1, "Hoje chumbei a PLOG", Date('2018-12-05 12:00'), 1,0,0);
+insert into Commentable values (2, "Eu tambem e adorei", Date('2018-12-05 12:09'), 2,0,0);
+insert into Commentable values (3, "Para o ano ha mais", Date('2018-12-05 12:12'), 1,0,0);
+insert into Commentable values (4, "Tamos juntos", Date('2018-12-05 12:14'), 3,0,0);
+insert into Commentable values (5, "Siga entao", Date('2018-12-05 12:17'), 1,0,0);
 
-insert into Commentable values (6, "Renda 150€ por mes", Date('2018-12-06 14:00'), 3);
-insert into Commentable values (7, "Mandei MP", Date('2018-12-06 14:09'), 2);
-insert into Commentable values (8, "Ja respondi!", Date('2018-12-06 14:12'), 3);
+insert into Commentable values (6, "Renda 150€ por mes", Date('2018-12-06 14:00'), 3,0,0);
+insert into Commentable values (7, "Mandei MP", Date('2018-12-06 14:09'), 2,0,0);
+insert into Commentable values (8, "Ja respondi!", Date('2018-12-06 14:12'), 3,0,0);
 
 
 insert into Story values (1, "Bad day");
