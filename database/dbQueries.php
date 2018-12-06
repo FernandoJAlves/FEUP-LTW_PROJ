@@ -33,4 +33,12 @@
     return $stmt->fetchAll();
   }
 
+  function addStory() {
+    $db = Database::instance()->db();
+    $cmd = 'SELECT * FROM Story,Commentable where Commentable.idCommentable = Story.idStory ORDER BY Commentable.dateC DESC';
+    $stmt = $db->prepare($cmd);
+    $stmt->execute();
+    return $stmt->fetchAll();
+  }
+
 ?>

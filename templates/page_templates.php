@@ -120,3 +120,34 @@
     </html>
 
 <?php } ?>
+
+<?php function draw_aside() {
+
+?>
+    <aside>
+      <div id="create_post">
+        <a href="create_post.php">Create a post</a>
+      </div>
+
+      <div id="links">
+        <a href="home.php">Home</a>
+      </div>
+    </aside>
+<?php } ?>
+
+
+<?php function draw_create_post() {
+
+?>
+<section id="post_content">
+        <form action="../actions/action_add_story.php" method="post">
+            <div>Title: <input type="text" name="title"><br></div>
+            <br>
+            <a>Write you story:<br><br></a>
+            <textarea name="story" form="usrform" cols="100" rows="10">Enter text here...</textarea>
+            <br><br>
+            <input type="submit" value="Post">
+        </form>      
+        
+    </section>
+<?php } ?>

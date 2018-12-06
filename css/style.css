@@ -120,7 +120,7 @@ body > section > form {
     padding-bottom: 1em;
 }
 
-body > section > form {
+body > section[id='register_content'] > form, body > section[id='login_content'] > form{
     display: grid;
     grid-template-columns: auto auto;
 }

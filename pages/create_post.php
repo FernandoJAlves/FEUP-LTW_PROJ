@@ -1,8 +1,8 @@
 <?php
   include_once('../templates/page_templates.php');
-  draw_header($_SESSION['username']);
-  draw_home();
-  draw_aside();
+
+  draw_header(null);
+  draw_create_post();
   draw_footer();
 
 ?>

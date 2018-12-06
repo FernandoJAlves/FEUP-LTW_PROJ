@@ -5,6 +5,7 @@
   draw_header($_SESSION['username']);
   $stories = recentStories();
   draw_stories($stories);
+  draw_aside();
   draw_footer();
 
 ?>
