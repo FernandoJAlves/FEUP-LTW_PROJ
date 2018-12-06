@@ -125,13 +125,17 @@
 
 ?>
     <aside>
+    <?php if(isset($_SESSION['username'])){ ?>
       <div id="create_post">
         <a href="create_post.php">Create a post</a>
       </div>
+    <?php } ?>
 
+  <?php if(basename($_SERVER['PHP_SELF']) != 'home.php'){ ?>
       <div id="links">
         <a href="home.php">Home</a>
       </div>
+  <?php } ?>
     </aside>
 <?php } ?>
 
