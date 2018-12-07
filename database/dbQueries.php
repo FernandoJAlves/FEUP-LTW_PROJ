@@ -72,4 +72,26 @@
     return $stmt->fetchAll();
   }
 
+  function insertStory($title, $text,$userId) {
+    $db = Database::instance()->db();
+    $date = date("Y-m-d H:i");
+    var_dump($date);
+    $stmt = $db->prepare('INSERT INTO Commentable(textC,dateC,idUser,n_upvotes,n_downvotes) VALUES(?, ?, ?, 0,0)');
+    $value = $stmt->execute(array($text,$date,$userId,0,0));
+    if($value == false){
+      return $value;
+    }
+    $stmt2 = $db->prepare('SELECT last_insert_rowid()');
+    $value2 = $stmt2->execute();
+    $storyId = $stmt2->fetch();
+
+    if($value2 == false){
+      return $value2;
+    }
+    $stmt3 = $db->prepare('INSERT INTO Story(idStory,title) VALUES(?, ?)');
+    $value3 = $stmt3->execute(array($userId,$title));
+    return $value3;
+    
+  }
+
 ?>
