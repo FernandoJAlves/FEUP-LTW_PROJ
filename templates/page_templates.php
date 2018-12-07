@@ -71,8 +71,8 @@
 
        <section id="login_content">
           <form action="../actions/action_login.php" method="post">
-              Username: <input type="text" name="name"><br>
-              Password: <input type="password" name="pass"><br>
+              <label> Username: </label> <input type="text" name="name">
+              <label> Password: </label> <input type="password" name="pass">
               <input type="submit" value="Sign In">
           </form>      
       </section>
@@ -84,11 +84,11 @@
 ?>
     <section id="register_content">
         <form action="../actions/action_register.php" method="post">
-            <div>Username: <input type="text" name="name"><br></div>
-            <div>Age: <input type="text" name="age"><br></div>
-            <div>E-mail: <input type="text" name="email"><br></div>
-            <div>Password: <input type="password" name="pass"><br></div>
-            <div>Confirm Password: <input type="password" name="conf"><br></div>
+            <label> Username: </label> <input type="text" name="name">
+            <label> Age: </label> <input type="text" name="age">
+            <label> E-mail: </label> <input type="text" name="email">
+            <label> Password: </label> <input type="password" name="pass">
+            <label> Confirm Password: </label> <input type="password" name="conf">
             <input type="submit" value="Sign Up">
         </form>      
     </section>

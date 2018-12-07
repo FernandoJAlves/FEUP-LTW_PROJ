@@ -111,13 +111,13 @@ body > footer p {
     margin: 0;
 }  
 
-/* login */
+/* login/register */
 
 body > section > form { 
-    padding-left: 3em;
-    padding-right: 1em;
-    padding-top: 1em;
-    padding-bottom: 1em;
+    padding-left: 5em;
+    padding-right: 5em;
+    padding-top: 3em;
+    padding-bottom: 3em;
 }
 
 body > section[id='register_content'] > form, body > section[id='login_content'] > form{
@@ -125,9 +125,11 @@ body > section[id='register_content'] > form, body > section[id='login_content']
     grid-template-columns: auto auto;
 }
 
-body > section > form > input:nth-last-of-type() {
-    grid-area: span2;
-    padding-left: 2em;
-    padding-right: 2em;
+body > section > form > input:nth-last-of-type(1) {
+    grid-column: 2 / 2;
 }
 
+body > section > form * {
+    padding: 3px;
+    margin: 2px;
+}
