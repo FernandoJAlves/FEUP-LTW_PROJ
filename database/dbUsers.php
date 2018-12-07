@@ -23,7 +23,7 @@
   function insertUser($username, $password,$email,$age) {
     $db = Database::instance()->db();
     $options = ['cost' => 12];
-    $stmt = $db->prepare('INSERT INTO GameItUser(username,pass,email,age) VALUES(?, ?, ?, ?)');
+    $stmt = $db->prepare('INSERT INTO GameItUser(username,pass,email,age,n_points) VALUES(?, ?, ?, ?,0)');
     $value = $stmt->execute(array($username, password_hash($password, PASSWORD_DEFAULT, $options),$email,$age));
     return $value;
   }

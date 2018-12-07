@@ -8,6 +8,8 @@
             <p><?=$story['textC']?><br></p>
             <p>Published: <?=$story['dateC']?><br></p>
             <p><?=$story['N_Comments']?> Comments<br></p>
+            <img src = "../img/upvote.png" alt="Upvote" width="20" height="20">
+            <img src = "../img/downvote.png" alt="Downvote" width="20" height="20">
             <br>
         </div>      
         <?php } ?>
