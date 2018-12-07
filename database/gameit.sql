@@ -10,7 +10,7 @@ DROP TABLE IF EXISTS GameItUser;
 
 CREATE TABLE GameItUser(
     idUser INTEGER NOT NULL PRIMARY KEY,
-    username TEXT NOT NULL,
+    username TEXT NOT NULL UNIQUE,
     pass TEXT NOT NULL,
     email TEXT NOT NULL,
     age INTEGER NOT NULL, -- ^ Campos obrigatorio
@@ -71,9 +71,14 @@ insert into Commentable values (6, "Renda 150€ por mes", Date('2018-12-06 14:0
 insert into Commentable values (7, "Mandei MP", Date('2018-12-06 14:09'), 2,0,0);
 insert into Commentable values (8, "Ja respondi!", Date('2018-12-06 14:12'), 3,0,0);
 
+insert into Commentable values (9, "Teste Upvotes", Date('2018-12-10 14:12'), 3,20,0);
+insert into Commentable values (10, "Teste Contro", Date('2018-12-10 14:12'), 3,7,5);
+
 
 insert into Story values (1, "Bad day");
 insert into Story values (6, "Quarto para arrendar");
+insert into Story values (9, "Teste Upvotes1");
+insert into Story values (10, "Teste Contro1");
 
 insert into Comment values (2, 1);
 insert into Comment values (3, 1);
@@ -115,3 +120,11 @@ GROUP BY Story.idStory;
 */
 
 
+
+/*
+SELECT Story.idStory, Story.title, Commentable.textC, Commentable.dateC, count(Comment.idComment) AS N_Comments
+FROM Story,Commentable, Comment
+WHERE Commentable.idCommentable = Story.idStory AND Comment.idParent = Commentable.idCommentable AND Commentable.n_upvotes > 10
+GROUP BY Story.idStory
+ORDER BY Commentable.dateC DESC;
+*/
