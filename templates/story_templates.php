@@ -42,6 +42,7 @@
 
 ?>
         <section id="comments_content">
+        <?php if(count($comments) > 0){ ?>
             <a>Comments: </a>
             <?php foreach ($comments as $comment){ ?>
                 <div>
@@ -49,6 +50,9 @@
                     <p>Published: <?=$comment['dateC']?><br></p>
                 </div>      
             <?php } ?>
+        <?php } else {?>
+            <a>This Story has no commentaries. Be the first one to comment.</a>
+        <?php } ?>
         </section>
     </section>
 <?php } ?>
