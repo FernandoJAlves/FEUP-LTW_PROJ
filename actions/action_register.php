@@ -16,11 +16,11 @@
 
     
     if($name == "" || $name == null){
-        echo"<script language='javascript' type='text/javascript'>alert('username field must not be empty');</script>";
+        $_SESSION['messages'][] = array('type' => 'error', 'content' => 'username field must not be empty');
         header('Location: ../pages/register.php');
     }
     else if($pass != $conf){
-        echo"<script language='javascript' type='text/javascript'>alert('the value of password is different');</script>";
+        $_SESSION['messages'][] = array('type' => 'error', 'content' => 'the value of password is different');
         header('Location: ../pages/register.php');
     }
 
@@ -39,7 +39,7 @@
  
       }
       else{
-        echo"<script language='javascript' type='text/javascript'>alert('That username already exists');</script>";
+        $_SESSION['messages'][] = array('type' => 'error', 'content' => 'That username already exists');
         header('Location: ../pages/register.php');
       }
     }

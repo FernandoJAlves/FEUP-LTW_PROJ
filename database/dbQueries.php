@@ -6,17 +6,13 @@
    */
   function recentStories() {
     $db = Database::instance()->db();
-    $cmd = /*'SELECT Story.idStory as id, Story.title as title, Commentable.textC as textC, Commentable.dateC as dateC, count(Comment.idComment) AS N_Comments
-            FROM Story, Commentable, Comment
-            WHERE Commentable.idCommentable = Story.idStory AND Comment.idParent = Commentable.idCommentable
-            GROUP BY Story.idStory
-            ORDER BY Commentable.dateC DESC';*/
-            'SELECT Story.idStory as id, Story.title as title, c1.textC as textC, c1.dateC as dateC, count(Comment.idComment) AS N_Comments 
+    $cmd = 'SELECT Story.idStory as id, Story.title as title, c1.textC as textC, c1.dateC as dateC, count(Comment.idComment) AS N_Comments, (c1.n_upvotes - c1.n_downvotes) as votes
             FROM Story 
             LEFT JOIN Commentable as c1 ON Story.idStory = c1.idCommentable 
             LEFT JOIN Comment ON Comment.idParent = Story.idStory 
             LEFT JOIN Commentable as c2 ON Comment.idComment = c2.idCommentable
-            GROUP BY Story.idStory';
+            GROUP BY Story.idStory
+            ORDER BY c1.dateC DESC';
     $stmt = $db->prepare($cmd);
     $stmt->execute();
     return $stmt->fetchAll();
@@ -24,11 +20,13 @@
 
   function hotStories() {
     $db = Database::instance()->db();
-    $cmd = 'SELECT Story.idStory as id, Story.title as title, Commentable.textC as textC, Commentable.dateC as dateC, count(Comment.idComment) AS N_Comments
-    FROM Story,Commentable, Comment
-    WHERE Commentable.idCommentable = Story.idStory AND Comment.idParent = Commentable.idCommentable
+    $cmd = 'SELECT Story.idStory as id, Story.title as title, c1.textC as textC, c1.dateC as dateC, count(Comment.idComment) AS N_Comments, (c1.n_upvotes - c1.n_downvotes) as votes
+    FROM Story 
+    LEFT JOIN Commentable as c1 ON Story.idStory = c1.idCommentable 
+    LEFT JOIN Comment ON Comment.idParent = Story.idStory 
+    LEFT JOIN Commentable as c2 ON Comment.idComment = c2.idCommentable
     GROUP BY Story.idStory
-    ORDER BY Commentable.dateC DESC';
+    ORDER BY votes DESC';
     $stmt = $db->prepare($cmd);
     $stmt->execute();
     return $stmt->fetchAll();
@@ -89,6 +87,13 @@
     $value3 = $stmt3->execute(array($storyId,$title));
     return $value3;
     
+  }
+
+  function insertVote($id,$userId,$value) {
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('INSERT INTO UserVote(voteVal,idUser,IdCommentable) VALUES(?,?,?)');
+    $ret = $stmt->execute(array($value,$userId,$id));
+    return array($id,$value);
   }
 
 ?>
