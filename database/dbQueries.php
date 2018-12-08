@@ -35,11 +35,14 @@
 
   function controversialStories() {
     $db = Database::instance()->db();
-    $cmd = 'SELECT Story.idStory as id, Story.title as title, Commentable.textC as textC, Commentable.dateC as dateC, count(Comment.idComment) AS N_Comments
-    FROM Story,Commentable, Comment
-    WHERE Commentable.idCommentable = Story.idStory AND Comment.idParent = Commentable.idCommentable
+    $cmd = 'SELECT Story.idStory as id, Story.title as title, c1.textC as textC, c1.dateC as dateC, count(Comment.idComment) AS N_Comments, (c1.n_upvotes - c1.n_downvotes) as votes
+    FROM Story 
+    LEFT JOIN Commentable as c1 ON Story.idStory = c1.idCommentable 
+    LEFT JOIN Comment ON Comment.idParent = Story.idStory 
+    LEFT JOIN Commentable as c2 ON Comment.idComment = c2.idCommentable
+    WHERE abs(c1.n_upvotes - c1.n_downvotes) < 10 AND c1.n_upvotes > 10 
     GROUP BY Story.idStory
-    ORDER BY Commentable.dateC DESC';
+    ORDER BY c1.n_upvotes DESC';
     $stmt = $db->prepare($cmd);
     $stmt->execute();
     return $stmt->fetchAll();
