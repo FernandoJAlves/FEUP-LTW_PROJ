@@ -148,7 +148,7 @@
             <div>Title: <input type="text" name="title"><br></div>
             <br>
             <a>Write you story:<br><br></a>
-            <textarea name="story" id="postform" cols="100" rows="10">Enter text here...</textarea>
+            <textarea name="story" id="postform" cols="100" rows="10" placeholder="Enter text here..."></textarea>
             <br><br>
             <input type="submit" value="Post">
         </form>      

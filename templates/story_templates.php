@@ -1,20 +1,24 @@
 <?php function draw_stories($stories) {
 
 ?>
+    <script src="../javascript/main.js" defer></script>
+        
     <section id="stories_content">
+        
         <?php foreach ($stories as $story){ ?>
         <div>
             <a href="../pages/story.php?id=<?=$story['id']?>"> <?=$story['title']?> <br></a>
             <p><?=$story['textC']?><br></p>
             <p>Published: <?=$story['dateC']?><br></p>
             <p><?=$story['N_Comments']?> Comments<br></p>
-            <img src = "../img/upvote.png" alt="Upvote" width="20" height="20">
-            <img src = "../img/downvote.png" alt="Downvote" width="20" height="20">
+            <img class="up-vote"  data-id="<?=$story['id']?>" src = "../img/upvote.png" alt="Upvote" width="20" height="20">
+            <img class="down-vote"  data-id="<?=$story['id']?>" src = "../img/downvote.png" alt="Downvote" width="20" height="20">
             <br>
         </div>      
         <?php } ?>
     </section>
 <?php } ?>
+
 
 
 <?php function draw_story($story) {

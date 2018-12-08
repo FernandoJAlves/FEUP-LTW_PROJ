@@ -30,7 +30,7 @@
         $insert = insertUser($name,$pass,$email,$age);
          
         if($insert){
-          $_SESSION['username'] = $username;
+          $_SESSION['username'] = $name;
           $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Signed up and logged in!');
         }else{
           $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to signup!');

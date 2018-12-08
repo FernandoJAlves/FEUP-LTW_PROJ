@@ -75,10 +75,10 @@ insert into Commentable values (9, "Teste Upvotes", Date('2018-12-10 14:12'), 3,
 insert into Commentable values (10, "Teste Contro", Date('2018-12-10 14:12'), 3,7,5);
 
 
-insert into Story values (1, "Bad day");
-insert into Story values (6, "Quarto para arrendar");
-insert into Story values (9, "Teste Upvotes1");
-insert into Story values (10, "Teste Contro1");
+-- insert into Story values (1, "Bad day");
+-- insert into Story values (6, "Quarto para arrendar");
+-- insert into Story values (9, "Teste Upvotes1");
+-- insert into Story values (10, "Teste Contro1");
 
 insert into Comment values (2, 1);
 insert into Comment values (3, 1);

@@ -24,7 +24,7 @@
         }
         $user = getUser($username);
         insertStory($title,$story,$user['idUser']);
-        //header('Location: ../pages/home.php');
+        header('Location: ../pages/home.php');
     }
 
 ?>
