@@ -85,12 +85,31 @@
     $stmt2 = $db->prepare('SELECT last_insert_rowid()');
     $value2 = $stmt2->execute();
     $storyId = $stmt2->fetchColumn();
-    var_dump($storyId);
     if($value2 == false){
       return $value2;
     }
     $stmt3 = $db->prepare('INSERT INTO Story(idStory,title) VALUES(?, ?)');
     $value3 = $stmt3->execute(array($storyId,$title));
+    return $value3;
+    
+  }
+
+  function insertComment($text,$userId,$parentId) {
+    $db = Database::instance()->db();
+    $date = date("Y-m-d H:i");
+    $stmt = $db->prepare('INSERT INTO Commentable(textC,dateC,idUser,n_upvotes,n_downvotes) VALUES(?, Date(?), ?, 0,0)');
+    $value = $stmt->execute(array($text,$date,$userId));
+    if($value == false){
+      return $value;
+    }
+    $stmt2 = $db->prepare('SELECT last_insert_rowid()');
+    $value2 = $stmt2->execute();
+    $commentId = $stmt2->fetchColumn();
+    if($value2 == false){
+      return $value2;
+    }
+    $stmt3 = $db->prepare('INSERT INTO Comment(idParent,idComment) VALUES(?, ?)');
+    $value3 = $stmt3->execute(array($parentId,$commentId));
     return $value3;
     
   }

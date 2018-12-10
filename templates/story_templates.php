@@ -1,5 +1,4 @@
 <?php function draw_stories($stories) {
-
 ?>
     <script src="../javascript/votes.js" defer></script>
         
@@ -19,9 +18,6 @@
         <?php } ?>
     </section>
 <?php } ?>
-
-
-
 <?php function draw_story($story) {
 
 ?>
@@ -43,8 +39,6 @@
             </div>      
         </section>
 <?php } ?>
-
-
 <?php function draw_comments($comments) {
 
 ?>
