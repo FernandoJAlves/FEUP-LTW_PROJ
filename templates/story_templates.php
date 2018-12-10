@@ -18,6 +18,11 @@
         <?php } ?>
     </section>
 <?php } ?>
+<!-- 
+
+
+
+-->
 <?php function draw_story($story) {
 
 ?>
@@ -39,6 +44,11 @@
             </div>      
         </section>
 <?php } ?>
+<!-- 
+
+
+
+-->
 <?php function draw_comments($comments) {
 
 ?>

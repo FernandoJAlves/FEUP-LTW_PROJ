@@ -48,6 +48,21 @@
     return $stmt->fetchAll();
   }
 
+  function searchStories($pattern) {
+    $db = Database::instance()->db();
+    $cmd = 'SELECT Story.idStory as id, Story.title as title, c1.textC as textC, c1.dateC as dateC, count(Comment.idComment) AS N_Comments, (c1.n_upvotes - c1.n_downvotes) as votes
+            FROM Story 
+            LEFT JOIN Commentable as c1 ON Story.idStory = c1.idCommentable 
+            LEFT JOIN Comment ON Comment.idParent = Story.idStory 
+            LEFT JOIN Commentable as c2 ON Comment.idComment = c2.idCommentable
+            WHERE Story.title like ? OR c1.textC like ?
+            GROUP BY Story.idStory
+            ORDER BY c1.dateC DESC';
+    $stmt = $db->prepare($cmd);
+    $stmt->execute(array("%".$pattern."%","%".$pattern."%"));
+    return $stmt->fetchAll();
+  }
+
   function getStory($id) {
     $db = Database::instance()->db();
     $cmd = 'SELECT Story.idStory as id, Story.title as title, c1.textC as textC, c1.dateC as dateC, count(Comment.idComment) AS N_Comments, (c1.n_upvotes - c1.n_downvotes) as votes
@@ -77,7 +92,7 @@
   function insertStory($title, $text,$userId) {
     $db = Database::instance()->db();
     $date = date("Y-m-d H:i");
-    $stmt = $db->prepare('INSERT INTO Commentable(textC,dateC,idUser,n_upvotes,n_downvotes) VALUES(?, Date(?), ?, 0,0)');
+    $stmt = $db->prepare('INSERT INTO Commentable(textC,dateC,idUser,n_upvotes,n_downvotes) VALUES(?, Datetime(?), ?, 0,0)');
     $value = $stmt->execute(array($text,$date,$userId));
     if($value == false){
       return $value;
