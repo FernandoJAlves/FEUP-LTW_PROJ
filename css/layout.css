@@ -12,8 +12,7 @@ body > nav li{
 /* grid */
 
 body {
-    background-color: #edeff0;
-  
+    background-color: rgb(236, 236, 236);
     margin: 0 auto;
     max-width: 60em;
   
