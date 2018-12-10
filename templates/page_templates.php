@@ -144,11 +144,11 @@
 
 ?>
 <section id="post_content">
-        <form action="../actions/action_add_story.php" method="post">
+        <form id="postform" action="../actions/action_add_story.php" method="post">
             <div>Title: <input type="text" name="title"><br></div>
             <br>
             <a>Write you story:<br><br></a>
-            <textarea name="story" form="usrform" cols="100" rows="10">Enter text here...</textarea>
+            <textarea name="story" id="postform" cols="100" rows="10" placeholder="Enter text here..."></textarea>
             <br><br>
             <input type="submit" value="Post">
         </form>      

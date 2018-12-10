@@ -75,10 +75,10 @@ insert into Commentable values (9, "Teste Upvotes", Date('2018-12-10 14:12'), 3,
 insert into Commentable values (10, "Teste Contro", Date('2018-12-10 14:12'), 3,7,5);
 
 
-insert into Story values (1, "Bad day");
-insert into Story values (6, "Quarto para arrendar");
-insert into Story values (9, "Teste Upvotes1");
-insert into Story values (10, "Teste Contro1");
+-- insert into Story values (1, "Bad day");
+-- insert into Story values (6, "Quarto para arrendar");
+-- insert into Story values (9, "Teste Upvotes1");
+-- insert into Story values (10, "Teste Contro1");
 
 insert into Comment values (2, 1);
 insert into Comment values (3, 1);
@@ -120,11 +120,12 @@ GROUP BY Story.idStory;
 */
 
 
-
 /*
-SELECT Story.idStory, Story.title, Commentable.textC, Commentable.dateC, count(Comment.idComment) AS N_Comments
-FROM Story,Commentable, Comment
-WHERE Commentable.idCommentable = Story.idStory AND Comment.idParent = Commentable.idCommentable AND Commentable.n_upvotes > 10
-GROUP BY Story.idStory
+-- Query
+SELECT Story1.idStory, Story1.title, Commentable.textC, Commentable.dateC, (SELECT count(Comment.idComment) AS N_Comments FROM Story, Commentable, Comment WHERE Story.idStory = Commentable.idCommentable AND Comment.idParent = Commentable.idCommentable AND Story.idStory = Story1.idStory) AS N_Comments
+FROM Story as Story1,Commentable
+WHERE Commentable.idCommentable = Story1.idStory AND Commentable.n_upvotes > 10
 ORDER BY Commentable.dateC DESC;
 */
+--Subquery
+--SELECT count(Comment.idComment) AS N_Comments FROM Story, Commentable, Comment WHERE Story.idStory = Commentable.idCommentable AND Comment.idParent = Commentable.idCommentable AND Story.idStory = idS;
