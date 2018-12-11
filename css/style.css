@@ -1,14 +1,11 @@
-/* fonts  */
-  
-html {
-    background-color: #d6d6d6
-}
+/* fonts  */  
+
+
 
 body {
     font-family: 'Verdana', sans-serif;
-    background-color: #d6d6d6;
 }
-  
+
 p {
     font-family: "Georgia", serif;
     line-height: 1.4em;
@@ -26,8 +23,8 @@ header a {
 
 body > header {
     background-color: #2a9fff;
-    color: black;
     padding: 1em;
+    border-bottom: 1px solid white;
   }
 
 body > header h1, body > header h2{
@@ -35,7 +32,7 @@ body > header h1, body > header h2{
 }
   
 body > header a {
-    color: rgb(0, 0, 0);
+    color: white;
     text-decoration: none;  
 }
 
@@ -63,7 +60,7 @@ body > header div#signup div{
     color: black;
 	text-decoration: none;
 	padding: 1em 0;
-	flex-grow: 0.35;
+    flex-grow: 0.35;
 }
   
 
@@ -75,12 +72,7 @@ body > header div#signup div{
 
 /* stories content */
 
-#stories_content{
-    background-color: #d6d6d6;
-}
-
 body > section#stories_content > div {
-    border: 0.1em solid rgb(0, 0, 0);
     background-color: white;
     border-radius: 0.2em;
     padding: 1em;
@@ -88,10 +80,6 @@ body > section#stories_content > div {
 } 
 
 /* home content */
-
-body > section#home_content{
-    background-color: #d6d6d6;
-}
 
 body > section#home_content > article {
     padding: 1em;
@@ -102,10 +90,6 @@ body > section#home_content > article {
 
 /* comments content */
 
-body > section#comments_content{
-    background-color: #d6d6d6;
-}
-
 body > section#comments_content > article {
     padding: 1em;
     margin-top: 1em;
@@ -113,42 +97,36 @@ body > section#comments_content > article {
     margin-right: 1em;
 } 
 
-/* login content */
-
-body > section#login_content{
-    background-color: #d6d6d6;
-}
-
-/* register content */
-
-body > section#register_content{
-    background-color: #d6d6d6;
-}
-
 /* aside */
 
 body > aside > div{
-    margin: 0.5em;
+    margin: 1em;
     padding: 1em;
     text-align: center;
-    border-width: 0.1em;
     border-radius: 0.2em;
-    border-color: black;
-    border-style: solid;
     background-color: rgb(255, 255, 255);
 }
 
-body > aside {
-    background-color: #d6d6d6;
-}
-
 body > aside a{
-    color: black;
+    
     text-decoration: none;
 }
 
 body > aside div#create_post{
-    background-color: rgb(9, 146, 209);
+    background-color: #2a9fff;
+}
+
+body > aside div#create_post > a{
+    color: white;
+}
+
+body > aside div#links{
+    background-color: white;
+    border: 1px solid #2a9fff;
+}
+
+body > aside div#links > a{
+    color: #2a9fff;
 }
 
 /* footer */

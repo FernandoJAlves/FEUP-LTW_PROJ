@@ -41,6 +41,12 @@
           </div>
         </div>
         <?php } ?>
+        <div id="searchBar">
+          <form id="searchform" action="../pages/search.php" method="post">
+            <input type="text" name="pattern">
+            <input type="submit" value="Search">
+          </form>
+        </div>
       </header>
       <nav id="menu">
           <a href="home.php">Home</a>
@@ -100,11 +106,31 @@
 ?>
     <section id="profile_content">
       <article>
+        <a href="edit_profile.php">Edit Profile</a>
         <h1><?=$user['username']?></h1>
         <img src = "../img/generic.png" alt="Excuse">
         <p>E-mail Address: <?=$user['email']?></p>
         <p>Age: <?=$user['age']?></p>
+        <p>Gameit Points: <?=$user['n_points']?></p>
+        <p>Description: <?=$user['descriptionUser']?></p>
       </article>        
+    </section>
+
+
+<?php } ?>
+
+<?php function draw_edit_profile($user) {
+
+?>
+    <section id="profile_editor">
+      <form id="editform" action="../actions/action_edit_profile.php" method="post">
+        <h1><?=$user['username']?></h1>
+        <img src = "../img/generic.png" alt="Excuse">
+        <p>E-mail Address:  <input type="text" name="email" value="<?=$user['email']?>"></p>
+        <p>Age: <input type="text" name="age" value="<?=$user['age']?>"></p>
+        <textarea name="description" id="editform" cols="100" rows="10" ><?=$user['descriptionUser']?></textarea>
+        <input type="submit" value="Save changes">
+      </form>        
     </section>
 
 

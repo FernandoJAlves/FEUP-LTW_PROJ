@@ -1,7 +1,6 @@
 <?php function draw_stories($stories) {
-
 ?>
-    <script src="../javascript/main.js" defer></script>
+    <script src="../javascript/votes.js" defer></script>
         
     <section id="stories_content">
         
@@ -19,12 +18,17 @@
         <?php } ?>
     </section>
 <?php } ?>
+<!-- 
 
 
 
+-->
 <?php function draw_story($story) {
 
 ?>
+    <script src="../javascript/votes.js" defer></script>
+    <script src="../javascript/reply.js" defer></script>
+    
     <section id="stories_sec">    
         <section id="stories_content">
             <div>
@@ -32,12 +36,19 @@
                 <p><?=$story['textC']?><br></p>
                 <p>Published: <?=$story['dateC']?><br></p>
                 <p><?=$story['N_Comments']?> Comments<br></p>
+                <img class="up-vote"  data-id="<?=$story['id']?>" src = "../img/upvote.png" alt="Upvote" width="20" height="20">
+                <a class="vote-number" data-id="<?=$story['id']?>"><?=$story['votes']?></a>
+                <img class="down-vote"  data-id="<?=$story['id']?>" src = "../img/downvote.png" alt="Downvote" width="20" height="20">
+                <p data-id="<?=$story['id']?>" class="reply">Reply</p>
                 <br>
             </div>      
         </section>
 <?php } ?>
+<!-- 
 
 
+
+-->
 <?php function draw_comments($comments) {
 
 ?>

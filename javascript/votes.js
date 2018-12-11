@@ -4,15 +4,13 @@ let downbuttons = document.querySelectorAll(".down-vote");
 
 upbuttons.forEach((button)=>{
     let storyId = button.getAttribute("data-id");
-    console.log(button);
-    console.log(storyId);
+
     button.addEventListener('click', voteAJAXRequest.bind(storyId,1,button));
 })
 
 downbuttons.forEach((button)=>{
     let storyId = button.getAttribute("data-id");
-    console.log(button);
-    console.log(storyId);
+
     button.addEventListener('click', voteAJAXRequest.bind(storyId,-1,button));
 })
 

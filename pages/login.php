@@ -3,6 +3,7 @@
 
   draw_header(null);
   draw_login();
+  draw_aside();
   draw_footer();
 
 ?>
