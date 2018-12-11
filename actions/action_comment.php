@@ -11,7 +11,7 @@ include_once('../templates/story_templates.php');
 
     
     if($text == null){
-        echo"<script language='javascript' type='text/javascript'>alert('username field must not be empty');</script>";
+        $_SESSION['messages'][] = array('type' => 'error', 'content' => 'comment text field must not be empty');
     }
 
     else{
