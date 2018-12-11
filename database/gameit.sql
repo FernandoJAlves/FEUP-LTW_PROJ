@@ -6,6 +6,11 @@ DROP TABLE IF EXISTS UserVote;
 DROP TABLE IF EXISTS Commentable;
 DROP TABLE IF EXISTS GameItUser;
 
+DROP VIEW IF EXISTS View_UV;
+
+DROP TRIGGER IF EXISTS Upvote;
+DROP TRIGGER IF EXISTS Downvote;
+DROP TRIGGER IF EXISTS UpdateUserPoints;
 
 
 CREATE TABLE GameItUser(
@@ -52,6 +57,8 @@ CREATE TABLE UserVote(
     PRIMARY KEY (idUser, idCommentable)
 );
 
+CREATE VIEW IF NOT EXISTS View_UV AS SELECT * FROM UserVote;
+
 insert into GameItUser values (1,"Nando","12345","mail@mail.com",20, "Likes to run",0);
 insert into GameItUser values (2,"Juan","qwerty","mymail@mail.com",20, "Likes to sleep",0);
 insert into GameItUser values (3,"Carlitos","password","nomail@mail.com",20, "Likes to stream",0);
@@ -61,18 +68,18 @@ insert into GameItUser values (3,"Carlitos","password","nomail@mail.com",20, "Li
 -- SELECT * FROM GameItUser WHERE idUser = 1;
 
 
-insert into Commentable values (1, "Hoje chumbei a PLOG", Date('2018-12-05 12:00'), 1,0,0);
-insert into Commentable values (2, "Eu tambem e adorei", Date('2018-12-05 12:09'), 2,0,0);
-insert into Commentable values (3, "Para o ano ha mais", Date('2018-12-05 12:12'), 1,0,0);
-insert into Commentable values (4, "Tamos juntos", Date('2018-12-05 12:14'), 3,0,0);
-insert into Commentable values (5, "Siga entao", Date('2018-12-05 12:17'), 1,0,0);
+insert into Commentable values (1, "Hoje chumbei a PLOG", Datetime('2018-12-05 12:00'), 1,0,0);
+insert into Commentable values (2, "Eu tambem e adorei", Datetime('2018-12-05 12:09'), 2,0,0);
+insert into Commentable values (3, "Para o ano ha mais", Datetime('2018-12-05 12:12'), 1,0,0);
+insert into Commentable values (4, "Tamos juntos", Datetime('2018-12-05 12:14'), 3,0,0);
+insert into Commentable values (5, "Siga entao", Datetime('2018-12-05 12:17'), 1,0,0);
 
-insert into Commentable values (6, "Renda 150€ por mes", Date('2018-12-06 14:00'), 3,0,0);
-insert into Commentable values (7, "Mandei MP", Date('2018-12-06 14:09'), 2,0,0);
-insert into Commentable values (8, "Ja respondi!", Date('2018-12-06 14:12'), 3,0,0);
+insert into Commentable values (6, "Renda 150€ por mes", Datetime('2018-12-06 14:00'), 3,0,0);
+insert into Commentable values (7, "Mandei MP", Datetime('2018-12-06 14:09'), 2,0,0);
+insert into Commentable values (8, "Ja respondi!", Datetime('2018-12-06 14:12'), 3,0,0);
 
-insert into Commentable values (9, "Teste Upvotes", Date('2018-12-10 14:12'), 3,20,0);
-insert into Commentable values (10, "Teste Contro", Date('2018-12-10 14:12'), 3,7,5);
+insert into Commentable values (9, "Teste Upvotes", Datetime('2018-12-10 14:11'), 3,0,0);
+insert into Commentable values (10, "Teste Contro", Datetime('2018-12-10 14:12'), 3,0,0);
 
 
 -- insert into Story values (1, "Bad day");
@@ -90,42 +97,34 @@ insert into Comment values (8, 6);
 
 
 insert into UserVote values (1, 3, 3);
-insert into UserVote values (1, 3, 6);
-
---SELECT * FROM Story, Commentable WHERE Story.idStory = Commentable.idCommentable;
-
-/*
-SELECT Story.title, count(Comment.idComment) AS N_Comments
-FROM Story, Commentable, Comment
-WHERE Story.idStory = Commentable.idCommentable AND Comment.idParent = Commentable.idCommentable  
-GROUP BY Story.title;
-
-SELECT Story.title, count(Comment.idComment) AS N_Comments
-FROM Story, Commentable, Comment
-WHERE Story.idStory = Commentable.idCommentable AND Comment.idParent = Commentable.idCommentable AND Story.idStory = 6;
-*/
-
-/*
-SELECT Story.idStory, Story.title, Commentable.textC, Commentable.dateC, count(Comment.idComment) AS N_Comments
-FROM Story,Commentable, Comment
-WHERE Commentable.idCommentable = Story.idStory AND Comment.idParent = Commentable.idCommentable
-GROUP BY Story.idStory
-ORDER BY Commentable.dateC DESC;
+insert into UserVote values (-1, 3, 6);
 
 
-SELECT Story.idStory, count(*) AS N_Likes
-FROM Story, Commentable, UserVote
-WHERE Commentable.idCommentable = Story.idStory AND UserVote.idCommentable = Commentable.idCommentable AND UserVote.voteVal = 1
-GROUP BY Story.idStory;
-*/
+CREATE TRIGGER IF NOT EXISTS Upvote
+INSTEAD OF INSERT
+ON View_UV
+WHEN new.voteVal = 1
+BEGIN
+    DELETE FROM UserVote WHERE UserVote.idUser = new.idUser AND UserVote.idCommentable = new.idCommentable;
+    INSERT INTO UserVote VALUES (1,new.idUser,new.idCommentable);
+END;
 
 
-/*
--- Query
-SELECT Story1.idStory, Story1.title, Commentable.textC, Commentable.dateC, (SELECT count(Comment.idComment) AS N_Comments FROM Story, Commentable, Comment WHERE Story.idStory = Commentable.idCommentable AND Comment.idParent = Commentable.idCommentable AND Story.idStory = Story1.idStory) AS N_Comments
-FROM Story as Story1,Commentable
-WHERE Commentable.idCommentable = Story1.idStory AND Commentable.n_upvotes > 10
-ORDER BY Commentable.dateC DESC;
-*/
---Subquery
---SELECT count(Comment.idComment) AS N_Comments FROM Story, Commentable, Comment WHERE Story.idStory = Commentable.idCommentable AND Comment.idParent = Commentable.idCommentable AND Story.idStory = idS;
+CREATE TRIGGER IF NOT EXISTS Downvote
+INSTEAD OF INSERT
+ON View_UV
+WHEN new.voteVal = -1
+BEGIN
+    DELETE FROM UserVote WHERE UserVote.idUser = new.idUser AND UserVote.idCommentable = new.idCommentable;
+    INSERT INTO UserVote VALUES (-1,new.idUser,new.idCommentable);
+END;
+
+
+CREATE TRIGGER IF NOT EXISTS UpdateUserPoints
+AFTER INSERT ON UserVote
+--WHEN UserVote.idUser = GameItUser.idUser
+BEGIN
+    --TODO
+    UPDATE GameItUser SET n_points = 123 WHERE GameItUser.idUser = new.idUser;
+END;
+
