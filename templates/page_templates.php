@@ -14,7 +14,7 @@
     <head>
       <title>GameIt</title>    
       <meta charset="UTF-8">
-      <link rel="shortcut icon" href="../img/favicon.ico">
+      <link rel="shortcut icon" href="../img/utilities/favicon.ico">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link href="../css/style.css" rel="stylesheet">
       <link href="../css/layout.css" rel="stylesheet">
@@ -108,7 +108,12 @@
       <article>
         <a href="edit_profile.php">Edit Profile</a>
         <h1><?=$user['username']?></h1>
-        <img src = "../img/generic.png" alt="Excuse">
+        <?php $imgPath = "../img/profiles/" . $_SESSION['username']. ".jpg";
+        if(!file_exists($imgPath)){
+          $imgPath = "../img/profiles/generic.png";
+        }
+        ?>
+        <img src = <?=$imgPath ?> alt="Excuse">
         <p>E-mail Address: <?=$user['email']?></p>
         <p>Age: <?=$user['age']?></p>
         <p>Gameit Points: <?=$user['n_points']?></p>
@@ -123,9 +128,18 @@
 
 ?>
     <section id="profile_editor">
+    <h1><?=$user['username']?></h1>
+      <form id="imgform" action="../actions/action_upload.php" method="post" enctype="multipart/form-data">
+        <?php $imgPath = "../img/profiles/" . $user['username']. ".jpg";
+        if(!file_exists($imgPath)){
+          $imgPath = "../img/profiles/generic.png";
+        }
+        ?>
+        <img src = <?=$imgPath ?> alt="Excuse">
+        <p>Change Profile Image: <Input type="file" name="image"><p>
+        <input type="submit" value="Update Image">
+      </form>
       <form id="editform" action="../actions/action_edit_profile.php" method="post">
-        <h1><?=$user['username']?></h1>
-        <img src = "../img/generic.png" alt="Excuse">
         <p>E-mail Address:  <input type="text" name="email" value="<?=$user['email']?>"></p>
         <p>Age: <input type="text" name="age" value="<?=$user['age']?>"></p>
         <textarea name="description" id="editform" cols="100" rows="10" ><?=$user['descriptionUser']?></textarea>
@@ -170,8 +184,10 @@
 
 ?>
 <section id="post_content">
-        <form id="postform" action="../actions/action_add_story.php" method="post">
+        <form id="postform" action="../actions/action_add_story.php" method="post" enctype="multipart/form-data">
             <div>Title: <input type="text" name="title"><br></div>
+            <br>
+            <p>Story Image: <Input type="file" name="image"><p>
             <br>
             <a>Write you story:<br><br></a>
             <textarea name="story" id="postform" cols="100" rows="10" placeholder="Enter text here..."></textarea>

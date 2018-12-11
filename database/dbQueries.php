@@ -105,8 +105,10 @@
     }
     $stmt3 = $db->prepare('INSERT INTO Story(idStory,title) VALUES(?, ?)');
     $value3 = $stmt3->execute(array($storyId,$title));
-    return $value3;
-    
+    if($value3 == false){
+      return $value3;
+    }
+    return $storyId;
   }
 
   function insertComment($text,$userId,$parentId) {

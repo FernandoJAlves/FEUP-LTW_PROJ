@@ -7,12 +7,15 @@
         <?php foreach ($stories as $story){ ?>
         <div>
             <a href="../pages/story.php?id=<?=$story['id']?>"> <?=$story['title']?> <br></a>
-            <p><?=$story['textC']?><br></p>
+            <?php $imgPath = "../img/thumbnails/".$story['id'].".jpg";
+                if(file_exists($imgPath)){ ?>
+                  <img src =<?=$imgPath ?> alt="Excuse">
+                <?php } ?>
             <p>Published: <?=$story['dateC']?><br></p>
             <p><?=$story['N_Comments']?> Comments<br></p>
-            <img class="up-vote"  data-id="<?=$story['id']?>" src = "../img/upvote.png" alt="Upvote" width="20" height="20">
+            <img class="up-vote"  data-id="<?=$story['id']?>" src = "../img/utilities/upvote.png" alt="Upvote" width="20" height="20">
             <a class="vote-number" data-id="<?=$story['id']?>"><?=$story['votes']?></a>
-            <img class="down-vote"  data-id="<?=$story['id']?>" src = "../img/downvote.png" alt="Downvote" width="20" height="20">
+            <img class="down-vote"  data-id="<?=$story['id']?>" src = "../img/utilities/downvote.png" alt="Downvote" width="20" height="20">
             <br>
         </div>      
         <?php } ?>
@@ -32,13 +35,17 @@
     <section id="stories_sec">    
         <section id="stories_content">
             <div>
-                <h1><?=$story['title']?> <br></h1>
+                <h1><?=$story['title']?> <br></h1><p><?=$story['textC']?><br></p>
+                <?php $imgPath = "../img/stories/".$story['id'].".jpg";
+                if(file_exists($imgPath)){ ?>
+                  <img src =<?=$imgPath ?> alt="Excuse">
+                <?php } ?>
                 <p><?=$story['textC']?><br></p>
                 <p>Published: <?=$story['dateC']?><br></p>
                 <p><?=$story['N_Comments']?> Comments<br></p>
-                <img class="up-vote"  data-id="<?=$story['id']?>" src = "../img/upvote.png" alt="Upvote" width="20" height="20">
+                <img class="up-vote"  data-id="<?=$story['id']?>" src = "../img/utilities/upvote.png" alt="Upvote" width="20" height="20">
                 <a class="vote-number" data-id="<?=$story['id']?>"><?=$story['votes']?></a>
-                <img class="down-vote"  data-id="<?=$story['id']?>" src = "../img/downvote.png" alt="Downvote" width="20" height="20">
+                <img class="down-vote"  data-id="<?=$story['id']?>" src = "../img/utilities/downvote.png" alt="Downvote" width="20" height="20">
                 <p data-id="<?=$story['id']?>" class="reply">Reply</p>
                 <br>
             </div>      
