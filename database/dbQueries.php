@@ -123,8 +123,8 @@
 
   function insertComment($text,$userId,$parentId) {
     $db = Database::instance()->db();
-    $date = date("Y-m-d H:i");
-    $stmt = $db->prepare('INSERT INTO Commentable(textC,dateC,idUser,n_upvotes,n_downvotes) VALUES(?, Date(?), ?, 0,0)');
+    $date = gmdate("Y-m-d H:i:s");
+    $stmt = $db->prepare('INSERT INTO Commentable(textC,dateC,idUser,n_upvotes,n_downvotes) VALUES(?, Datetime(?), ?, 0,0)');
     $value = $stmt->execute(array($text,$date,$userId));
     if($value == false){
       return $value;
@@ -143,7 +143,7 @@
 
   function insertVote($id,$userId,$value) {
     $db = Database::instance()->db();
-    $stmt = $db->prepare('INSERT INTO UserVote(voteVal,idUser,IdCommentable) VALUES(?,?,?)');
+    $stmt = $db->prepare('INSERT INTO View_UV(voteVal,idUser,IdCommentable) VALUES(?,?,?)');
     $ret = $stmt->execute(array($value,$userId,$id));
     return $ret;
   }

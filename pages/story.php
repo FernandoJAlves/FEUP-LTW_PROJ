@@ -15,7 +15,7 @@
   $story = getStory($id);
   draw_story($story);
   $comments = getComments($id);
-  draw_comments($comments);
+  draw_comments($id,$comments);
   draw_aside();
   draw_footer();
 

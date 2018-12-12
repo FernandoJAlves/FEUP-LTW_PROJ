@@ -1,16 +1,14 @@
 let replyButtons = document.querySelectorAll(".reply");
-let parentId;
 let userId;
 
 
 replyButtons.forEach((button)=>{
-    parentId = button.getAttribute("data-id");
     button.addEventListener('click', replyListener.bind(button));
 })
 
 function replyListener(event){
     let id = this;
-    let story = document.querySelector("section[id='stories_content'");
+    let story = document.querySelector("section[id='stories_content']");
     let button = this;
     form = document.createElement("form");
     form.setAttribute("id","commentform");
@@ -49,13 +47,24 @@ function commentRequest(button,form){
     let text = form.querySelector("textarea").value;
     request.open("post", "../actions/action_comment.php", true);
     request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    let parentId = button.getAttribute("data-id");
     request.send(encodeForAjax({text: text, id:parentId}));
     
 }
 
 
 function commentRequestListener(button,form,event){
-    comments_sec = document.querySelector("section[id='comments_content']");
+    let parentId = button.getAttribute("data-id");
+    let str = ".comments[data-id='" + parentId + "']";
+    comments_sec = document.querySelector(str);
+    let no_comments = document.querySelector("a[id='no_comments']");
+    if(no_comments != null){
+    no_comments.remove();
+    }
     comments_sec.outerHTML = this.responseText;
     form.replaceWith(button);
+    replyButtons = document.querySelectorAll(".reply");
+    replyButtons.forEach((button)=>{
+        button.addEventListener('click', replyListener.bind(button));
+    })
 }

@@ -68,5 +68,5 @@ if($_FILES['image']['name'])
     }
 
 }
-header('Location: ../pages/home.php');
+header('Location: ../pages/story.php?id='.$storyId);
 ?>

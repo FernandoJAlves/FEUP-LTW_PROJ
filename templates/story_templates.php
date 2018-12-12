@@ -35,7 +35,7 @@
     <section id="stories_sec">    
         <section id="stories_content">
             <div>
-                <h1><?=$story['title']?> <br></h1><p><?=$story['textC']?><br></p>
+                <h1><?=$story['title']?> <br></h1>
                 <?php $imgPath = "../img/stories/".$story['id'].".jpg";
                 if(file_exists($imgPath)){ ?>
                   <img src =<?=$imgPath ?> alt="Excuse">
@@ -56,21 +56,38 @@
 
 
 -->
-<?php function draw_comments($comments) {
+<?php function draw_comments($id,$comments) {
 
 ?>
-        <section id="comments_content">
+        <section id="comments_content" data-id="<?=$id?>">
+        <a>Comments: </a>
+        <?php if(draw_comments_recursive($id,$comments)){ ?>
+            <a id="no_comments">This Story has no commentaries. Be the first one to comment.</a>
+        <?php } ?>  
+        </section>
+    </section>
+<?php } ?>
+<!-- 
+
+
+
+-->
+<?php function draw_comments_recursive($id,$comments) {
+
+?>
+        <section data-id="<?=$id?>" class="comments">
         <?php if(count($comments) > 0){ ?>
-            <a>Comments: </a>
             <?php foreach ($comments as $comment){ ?>
                 <div>
                     <p><?=$comment['textC']?><br></p>
                     <p>Published: <?=$comment['dateC']?><br></p>
+                    <p data-id="<?=$comment['id']?>" class="reply">Reply</p>
                 </div>      
-            <?php } ?>
-        <?php } else {?>
-            <a>This Story has no commentaries. Be the first one to comment.</a>
-        <?php } ?>
-        </section>
-    </section>
-<?php } ?>
+                <?php $new_comments = getComments($comment['id']);
+                draw_comments_recursive($comment['id'],$new_comments);
+            };       
+            echo "</section>";
+            return false; ?>
+        <?php } else{ 
+            echo "</section>";
+            return true;}}?>

@@ -23,7 +23,8 @@ include_once('../templates/story_templates.php');
         }
         $user = getUser($username);
         insertComment($text,$user['idUser'],$parentId);
-        draw_comments(getComments($parentId));
+        
+        draw_comments_recursive($parentId,getComments($parentId));
     }
 
 ?>

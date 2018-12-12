@@ -8,8 +8,9 @@
         $storyId = $_POST['storyId'];
         $username = $_SESSION['username'];
         $user = getUser($username);
-        //$ret = insertVote($storyId,$user['idUser'],$value);
-        echo json_encode(array($storyId,$value));
+        $ret = insertVote($storyId,$user['idUser'],$value);
+        $points = getPoints($storyId);
+        echo json_encode(array($storyId,$points['points']));
         
         
     

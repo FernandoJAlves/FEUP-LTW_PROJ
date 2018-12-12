@@ -18,8 +18,7 @@ function requestListener(button,event) {
     let reply = JSON.parse(this.responseText);
     let str = ".vote-number[data-id='" + reply[0] + "']";
     let votes = document.querySelector(str);
-    let num = parseInt(votes.innerHTML);
-    votes.innerHTML = (num+parseInt(reply[1]));
+    votes.innerHTML = parseInt(reply[1]);
 
 }
 
