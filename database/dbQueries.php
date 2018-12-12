@@ -89,6 +89,16 @@
     return $stmt->fetchAll();
   }
 
+  function getPoints($commentableId){
+    $db = Database::instance()->db();
+    $cmd = 'SELECT (Commentable.n_upvotes - Commentable.n_downvotes) as points
+    FROM Commentable
+    WHERE Commentable.idCommentable = ?';
+    $stmt = $db->prepare($cmd);
+    $stmt->execute(array($commentableId));
+    return $stmt->fetch();
+  }
+
   function insertStory($title, $text,$userId) {
     $db = Database::instance()->db();
     $date = date("Y-m-d H:i");
@@ -135,7 +145,7 @@
     $db = Database::instance()->db();
     $stmt = $db->prepare('INSERT INTO UserVote(voteVal,idUser,IdCommentable) VALUES(?,?,?)');
     $ret = $stmt->execute(array($value,$userId,$id));
-    return array($id,$value);
+    return $ret;
   }
 
 ?>
