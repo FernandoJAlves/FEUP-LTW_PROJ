@@ -112,12 +112,8 @@ body > section#home_content > article {
 
 /* aside */
 
-body > aside > div{
-    margin: 1em;
-    padding: 1em;
+body > aside{
     text-align: center;
-    border-radius: 0.2em;
-    background-color: rgb(255, 255, 255);
 }
 
 body > aside a{
@@ -126,19 +122,37 @@ body > aside a{
 }
 
 body > aside div#create_post{
+    margin: 1em;
+    padding: 1em;
     background-color: #2a9fff;
+    border-radius: 0.2em;
 }
 
 body > aside div#create_post > a{
     color: white;
 }
 
-body > aside div#links{
+#links #home{
+    margin: 1em;
+    padding: 1em;
     background-color: white;
     border: 1px solid #2a9fff;
+    border-radius: 0.2em;
 }
 
-body > aside div#links > a{
+#links #home > a{
+    color: #2a9fff;
+}
+
+#links #top{
+    margin: 1em;
+    padding: 1em;
+    background-color: white;
+    border: 1px solid #2a9fff;
+    border-radius: 0.2em;
+}
+
+#links#top > a{
     color: #2a9fff;
 }
 

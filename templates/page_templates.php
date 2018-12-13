@@ -173,7 +173,12 @@
 
   <?php if(basename($_SERVER['PHP_SELF']) != 'home.php'){ ?>
       <div id="links">
-        <a href="home.php">Home</a>
+        <div id="home">
+          <a href="home.php">Home</a>
+        </div>
+        <div id="top">
+          <a href="#">Top</a>
+        </div> 
       </div>
   <?php } ?>
     </aside>

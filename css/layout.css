@@ -15,6 +15,7 @@ body {
     background-color: rgb(236, 236, 236);
     margin: 0 auto;
     max-width: 60em;
+    min-width: 60em;
   
     display: grid;
 }
@@ -29,10 +30,19 @@ body > nav {
 
 body > section {
     grid-area: 3 / 1;
+    width: 40em;
 }
 
 body > aside {
     grid-area: 3 / 2;
+    min-width: 20em;
+    max-width: 20em;
+    position: fixed;
+    z-index: 1;
+    top: 12em;
+    right: 12.5em;
+    overflow-x: hidden;
+
 }
 
 body > footer {
