@@ -97,6 +97,11 @@ body > section#home_content > article {
     margin-right: 1em;
 } 
 
+body > section#stories_content > div > a {
+    text-decoration: none;
+    color: black;
+}
+
 /* comments content */
 
 .comments  {
@@ -152,7 +157,7 @@ body > aside div#create_post > a{
     border-radius: 0.2em;
 }
 
-#links#top > a{
+#links #top > a{
     color: #2a9fff;
 }
 
