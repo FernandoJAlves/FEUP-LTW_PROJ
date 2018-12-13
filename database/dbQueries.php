@@ -6,11 +6,12 @@
    */
   function recentStories() {
     $db = Database::instance()->db();
-    $cmd = 'SELECT Story.idStory as id, Story.title as title, c1.textC as textC, c1.dateC as dateC, count(Comment.idComment) AS N_Comments, (c1.n_upvotes - c1.n_downvotes) as votes
+    $cmd = 'SELECT Story.idStory as id, Story.title as title, c1.textC as textC, c1.dateC as dateC, count(Comment.idComment) AS N_Comments, (c1.n_upvotes - c1.n_downvotes) as votes, GameItUser.username as username
             FROM Story 
             LEFT JOIN Commentable as c1 ON Story.idStory = c1.idCommentable 
             LEFT JOIN Comment ON Comment.idParent = Story.idStory 
             LEFT JOIN Commentable as c2 ON Comment.idComment = c2.idCommentable
+            LEFT JOIN GameItUser ON c1.idUser = GameItUser.idUser
             GROUP BY Story.idStory
             ORDER BY c1.dateC DESC';
     $stmt = $db->prepare($cmd);
@@ -20,11 +21,12 @@
 
   function hotStories() {
     $db = Database::instance()->db();
-    $cmd = 'SELECT Story.idStory as id, Story.title as title, c1.textC as textC, c1.dateC as dateC, count(Comment.idComment) AS N_Comments, (c1.n_upvotes - c1.n_downvotes) as votes
+    $cmd = 'SELECT Story.idStory as id, Story.title as title, c1.textC as textC, c1.dateC as dateC, count(Comment.idComment) AS N_Comments, (c1.n_upvotes - c1.n_downvotes) as votes, GameItUser.username as username
     FROM Story 
     LEFT JOIN Commentable as c1 ON Story.idStory = c1.idCommentable 
     LEFT JOIN Comment ON Comment.idParent = Story.idStory 
     LEFT JOIN Commentable as c2 ON Comment.idComment = c2.idCommentable
+    LEFT JOIN GameItUser ON c1.idUser = GameItUser.idUser
     GROUP BY Story.idStory
     ORDER BY votes DESC';
     $stmt = $db->prepare($cmd);
@@ -35,11 +37,12 @@
 
   function controversialStories() {
     $db = Database::instance()->db();
-    $cmd = 'SELECT Story.idStory as id, Story.title as title, c1.textC as textC, c1.dateC as dateC, count(Comment.idComment) AS N_Comments, (c1.n_upvotes - c1.n_downvotes) as votes
+    $cmd = 'SELECT Story.idStory as id, Story.title as title, c1.textC as textC, c1.dateC as dateC, count(Comment.idComment) AS N_Comments, (c1.n_upvotes - c1.n_downvotes) as votes, GameItUser.username as username
     FROM Story 
     LEFT JOIN Commentable as c1 ON Story.idStory = c1.idCommentable 
     LEFT JOIN Comment ON Comment.idParent = Story.idStory 
     LEFT JOIN Commentable as c2 ON Comment.idComment = c2.idCommentable
+    LEFT JOIN GameItUser ON c1.idUser = GameItUser.idUser
     WHERE abs(c1.n_upvotes - c1.n_downvotes) < 10 AND c1.n_upvotes > 10 
     GROUP BY Story.idStory
     ORDER BY c1.n_upvotes DESC';
@@ -50,11 +53,12 @@
 
   function searchStories($pattern) {
     $db = Database::instance()->db();
-    $cmd = 'SELECT Story.idStory as id, Story.title as title, c1.textC as textC, c1.dateC as dateC, count(Comment.idComment) AS N_Comments, (c1.n_upvotes - c1.n_downvotes) as votes
+    $cmd = 'SELECT Story.idStory as id, Story.title as title, c1.textC as textC, c1.dateC as dateC, count(Comment.idComment) AS N_Comments, (c1.n_upvotes - c1.n_downvotes) as votes, GameItUser.username as username
             FROM Story 
             LEFT JOIN Commentable as c1 ON Story.idStory = c1.idCommentable 
             LEFT JOIN Comment ON Comment.idParent = Story.idStory 
             LEFT JOIN Commentable as c2 ON Comment.idComment = c2.idCommentable
+            LEFT JOIN GameItUser ON c1.idUser = GameItUser.idUser
             WHERE Story.title like ? OR c1.textC like ?
             GROUP BY Story.idStory
             ORDER BY c1.dateC DESC';
@@ -65,11 +69,12 @@
 
   function getStory($id) {
     $db = Database::instance()->db();
-    $cmd = 'SELECT Story.idStory as id, Story.title as title, c1.textC as textC, c1.dateC as dateC, count(Comment.idComment) AS N_Comments, (c1.n_upvotes - c1.n_downvotes) as votes
+    $cmd = 'SELECT Story.idStory as id, Story.title as title, c1.textC as textC, c1.dateC as dateC, count(Comment.idComment) AS N_Comments, (c1.n_upvotes - c1.n_downvotes) as votes, GameItUser.username as username
     FROM Story 
     LEFT JOIN Commentable as c1 ON Story.idStory = c1.idCommentable 
     LEFT JOIN Comment ON Comment.idParent = Story.idStory 
     LEFT JOIN Commentable as c2 ON Comment.idComment = c2.idCommentable
+    LEFT JOIN GameItUser ON c1.idUser = GameItUser.idUser
     WHERE Story.idStory = ?
     GROUP BY Story.idStory';
     $stmt = $db->prepare($cmd);
@@ -79,8 +84,10 @@
 
   function getComments($storyId) {
     $db = Database::instance()->db();
-    $cmd = 'SELECT Comment.idComment as id, Commentable.textC as textC, Commentable.dateC as dateC
-    FROM Comment LEFT JOIN Commentable ON Comment.idComment = Commentable.idCommentable
+    $cmd = 'SELECT Comment.idComment as id, Commentable.textC as textC, Commentable.dateC as dateC, GameItUser.username as username
+    FROM Comment 
+    LEFT JOIN Commentable ON Comment.idComment = Commentable.idCommentable
+    LEFT JOIN GameItUser ON Commentable.idUser = GameItUser.idUser
     WHERE Comment.idParent = ? 
     GROUP BY Comment.idComment
     ORDER BY Commentable.dateC DESC';

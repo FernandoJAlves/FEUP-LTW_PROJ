@@ -18,6 +18,7 @@ if($_FILES['image']['name'])
     {
         // Generate filenames for original, small and medium files
         $profileFileName = "../img/profiles/$currUser.jpg";
+        $profileThumbnail = "../img/profiles_thumbnail/$currUser.jpg";
         // Create an image representation of the original image
         if ( !($original = createImageFromType($_FILES['image'])) ) {
             //Error message here and go on - $message = 'Received wrong file type. Please use jpeg or png'
@@ -27,6 +28,7 @@ if($_FILES['image']['name'])
         $height = imagesy($original);    // height of the original image
         $square = min($width, $height);  // size length of the maximum square
         addThumbnail($original, $profileFileName, 300, $width, $height, $square);
+        addThumbnail($original, $profileThumbnail, 30, $width, $height, $square);
         //$message = 'File succesfully loaded';
     }
 

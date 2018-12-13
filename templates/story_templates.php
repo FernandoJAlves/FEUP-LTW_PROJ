@@ -16,6 +16,14 @@
             <img class="up-vote"  data-id="<?=$story['id']?>" src = "../img/utilities/upvote.png" alt="Upvote" width="20" height="20">
             <a class="vote-number" data-id="<?=$story['id']?>"><?=$story['votes']?></a>
             <img class="down-vote"  data-id="<?=$story['id']?>" src = "../img/utilities/downvote.png" alt="Downvote" width="20" height="20">
+            <div class="author">
+                    <?php $imgPath = "../img/profiles_thumbnail/" . $story['username']. ".jpg";
+                    if(!file_exists($imgPath)){
+                    $imgPath = "../img/profiles_thumbnail/generic.png";
+                    } ?>
+                    <img src = <?=$imgPath ?> alt="Excuse">
+                    <p><?=$story['username']?><br></p>
+            </div>
             <br>
         </div>      
         <?php } ?>
@@ -46,6 +54,15 @@
                 <img class="up-vote"  data-id="<?=$story['id']?>" src = "../img/utilities/upvote.png" alt="Upvote" width="20" height="20">
                 <a class="vote-number" data-id="<?=$story['id']?>"><?=$story['votes']?></a>
                 <img class="down-vote"  data-id="<?=$story['id']?>" src = "../img/utilities/downvote.png" alt="Downvote" width="20" height="20">
+                
+                <div class="author">
+                    <?php $imgPath = "../img/profiles_thumbnail/" . $story['username']. ".jpg";
+                    if(!file_exists($imgPath)){
+                    $imgPath = "../img/profiles_thumbnail/generic.png";
+                    } ?>
+                    <img src = <?=$imgPath ?> alt="Excuse">
+                    <p><?=$story['username']?><br></p>
+                </div>
                 <p data-id="<?=$story['id']?>" class="reply">Reply</p>
                 <br>
             </div>      
@@ -79,6 +96,14 @@
         <?php if(count($comments) > 0){ ?>
             <?php foreach ($comments as $comment){ ?>
                 <div>
+                    <div class="author">
+                    <?php $imgPath = "../img/profiles_thumbnail/" . $comment['username']. ".jpg";
+                    if(!file_exists($imgPath)){
+                    $imgPath = "../img/profiles_thumbnail/generic.png";
+                    } ?>
+                    <img src ="<?=$imgPath?>" alt="Excuse">
+                    <p><?=$comment['username']?>:<br></p>
+                    </div>
                     <p><?=$comment['textC']?><br></p>
                     <p>Published: <?=$comment['dateC']?><br></p>
                     <p data-id="<?=$comment['id']?>" class="reply">Reply</p>

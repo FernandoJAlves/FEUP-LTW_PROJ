@@ -34,6 +34,11 @@
         else { ?>
         <div id="session">
           <div>
+          <?php $imgPath = "../img/profiles_thumbnail/" . $username. ".jpg";
+          if(!file_exists($imgPath)){
+            $imgPath = "../img/profiles_thumbnail/generic.png";
+          } ?>
+          <img src = <?=$imgPath ?> alt="Excuse">
           <a href="profile.php"><?= $username?></a>
           </div>
           <div>
