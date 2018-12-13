@@ -101,8 +101,8 @@ INSTEAD OF INSERT
 ON View_UV
 WHEN new.voteVal = 1
 BEGIN
-    DELETE FROM UserVote WHERE UserVote.idUser = new.idUser AND UserVote.idCommentable = new.idCommentable;
-    INSERT INTO UserVote VALUES (1,new.idUser,new.idCommentable);
+    --DELETE FROM UserVote WHERE UserVote.idUser = new.idUser AND UserVote.idCommentable = new.idCommentable;
+    INSERT OR REPLACE INTO UserVote VALUES (1,new.idUser,new.idCommentable);
 END;
 
 

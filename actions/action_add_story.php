@@ -3,6 +3,7 @@
   include_once('../database/dbUsers.php');
   include_once('../database/dbQueries.php');
   include_once('../includes/session.php');
+  include_once('action_upload.php');
 
 
     $title = $_POST['title'];
@@ -24,27 +25,6 @@
         $user = getUser($username);
         $storyId = insertStory($title,$story,$user['idUser']);
         
-
-function addThumbnail($original, $newFileName, $newSize, $width, $height, $square) {
-    
-    $thumbnail = imagecreatetruecolor($newSize, $newSize);
-    imagecopyresized($thumbnail, $original, 0, 0,
-                    ($width > $square)? ($width - $square)/2 : 0,
-                    ($height > $square)? ($height - $square)/2 : 0,
-                    $newSize, $newSize, $square, $square);
-    imagejpeg($thumbnail, $newFileName);
-}
-function createImageFromType($image) {
-    switch ($image['type']) {
-        case 'image/jpg':
-        case 'image/jpeg':
-            return imagecreatefromjpeg($image['tmp_name']);
-        case 'image/png':
-            return imagecreatefrompng($image['tmp_name']);
-        default:
-            return FALSE;
-    }
-}
 //If an image was uploaded
 if($_FILES['image']['name'])
 {
