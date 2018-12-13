@@ -50,7 +50,7 @@
                 <?php } ?>
                 <p><?=$story['textC']?><br></p>
                 <p>Published: <?=$story['dateC']?><br></p>
-                <p><?=$story['N_Comments']?> Comments<br></p>
+                <p class="comments_count"><?=$story['N_Comments']?> Comments<br></p>
                 <img class="up-vote"  data-id="<?=$story['id']?>" src = "../img/utilities/upvote.png" alt="Upvote" width="20" height="20">
                 <a class="vote-number" data-id="<?=$story['id']?>"><?=$story['votes']?></a>
                 <img class="down-vote"  data-id="<?=$story['id']?>" src = "../img/utilities/downvote.png" alt="Downvote" width="20" height="20">

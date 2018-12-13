@@ -67,4 +67,7 @@ function commentRequestListener(button,form,event){
     replyButtons.forEach((button)=>{
         button.addEventListener('click', replyListener.bind(button));
     })
+    let comments_num = document.querySelector(".comments_count");
+    let num = parseInt(comments_num.innerHTML);
+    comments_num.innerHTML = num+1;
 }
