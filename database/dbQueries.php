@@ -150,7 +150,29 @@
 
   function insertVote($id,$userId,$value) {
     $db = Database::instance()->db();
-    $stmt = $db->prepare('INSERT INTO View_UV(voteVal,idUser,IdCommentable) VALUES(?,?,?)');
+    $stmt = $db->prepare('INSERT INTO UserVote(voteVal,idUser,IdCommentable) VALUES(?,?,?)');
+    $ret = $stmt->execute(array($value,$userId,$id));
+    return $ret;
+  }
+
+  function deleteVote($id,$userId) {
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('DELETE FROM UserVote WHERE idUser = ? AND idCommentable = ?');
+    $ret = $stmt->execute(array($userId,$id));
+    return $ret;
+  }
+
+  function getVote($id,$userId) {
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('SELECT voteVal FROM UserVote WHERE idUser = ? AND idCommentable = ?');
+    $value = $stmt->execute(array($userId,$id));
+    $ret = $stmt->fetch();
+    return $ret;
+  }
+
+  function updateVote($id,$userId,$value) {
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('UPDATE UserVote SET voteVal = ? WHERE idUser = ? AND idCommentable = ?');
     $ret = $stmt->execute(array($value,$userId,$id));
     return $ret;
   }

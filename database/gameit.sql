@@ -10,7 +10,9 @@ DROP VIEW IF EXISTS View_UV;
 
 DROP TRIGGER IF EXISTS Upvote;
 DROP TRIGGER IF EXISTS Downvote;
-DROP TRIGGER IF EXISTS UpdatePoints;
+DROP TRIGGER IF EXISTS UpdatePointsInsert;
+DROP TRIGGER IF EXISTS UpdatePointsUpdate;
+DROP TRIGGER IF EXISTS UpdatePointsDelete;
 
 
 CREATE TABLE GameItUser(
@@ -57,7 +59,7 @@ CREATE TABLE UserVote(
     PRIMARY KEY (idUser, idCommentable)
 );
 
-CREATE VIEW IF NOT EXISTS View_UV AS SELECT * FROM UserVote;
+--CREATE VIEW IF NOT EXISTS View_UV AS SELECT * FROM UserVote;
 
 insert into GameItUser values (1,"Nando","12345","mail@mail.com",20, "Likes to run",0);
 insert into GameItUser values (2,"Juan","qwerty","mymail@mail.com",20, "Likes to sleep",0);
@@ -95,7 +97,7 @@ insert into Comment values (5, 1);
 insert into Comment values (7, 6);
 insert into Comment values (8, 6);
 
-
+/*
 CREATE TRIGGER IF NOT EXISTS Upvote
 INSTEAD OF INSERT
 ON View_UV
@@ -114,13 +116,29 @@ BEGIN
     DELETE FROM UserVote WHERE UserVote.idUser = new.idUser AND UserVote.idCommentable = new.idCommentable;
     INSERT INTO UserVote VALUES (-1,new.idUser,new.idCommentable);
 END;
+*/
 
-
-CREATE TRIGGER IF NOT EXISTS UpdatePoints
+CREATE TRIGGER IF NOT EXISTS UpdatePointsInsert
 AFTER INSERT ON UserVote
 BEGIN
     UPDATE Commentable SET n_upvotes = (SELECT count(*) FROM UserVote WHERE idCommentable = new.idCommentable AND voteVal = 1) WHERE Commentable.idCommentable = new.idCommentable;
     UPDATE Commentable SET n_downvotes = (SELECT count(*) FROM UserVote WHERE idCommentable = new.idCommentable AND voteVal =-1) WHERE Commentable.idCommentable = new.idCommentable;
+    UPDATE GameItUser SET n_points = (SELECT sum(n_upvotes)-sum(n_downvotes) FROM Commentable WHERE idUser = (SELECT Commentable.idUser FROM Commentable, UserVote WHERE UserVote.idCommentable = Commentable.idCommentable)) WHERE GameItUser.idUser = (SELECT Commentable.idUser FROM Commentable, UserVote WHERE UserVote.idCommentable = Commentable.idCommentable);
+END;
+
+CREATE TRIGGER IF NOT EXISTS UpdatePointsUpdate
+AFTER UPDATE ON UserVote
+BEGIN
+    UPDATE Commentable SET n_upvotes = (SELECT count(*) FROM UserVote WHERE idCommentable = new.idCommentable AND voteVal = 1) WHERE Commentable.idCommentable = new.idCommentable;
+    UPDATE Commentable SET n_downvotes = (SELECT count(*) FROM UserVote WHERE idCommentable = new.idCommentable AND voteVal =-1) WHERE Commentable.idCommentable = new.idCommentable;
+    UPDATE GameItUser SET n_points = (SELECT sum(n_upvotes)-sum(n_downvotes) FROM Commentable WHERE idUser = (SELECT Commentable.idUser FROM Commentable, UserVote WHERE UserVote.idCommentable = Commentable.idCommentable)) WHERE GameItUser.idUser = (SELECT Commentable.idUser FROM Commentable, UserVote WHERE UserVote.idCommentable = Commentable.idCommentable);
+END;
+
+CREATE TRIGGER IF NOT EXISTS UpdatePointsDelete
+AFTER DELETE ON UserVote
+BEGIN
+    UPDATE Commentable SET n_upvotes = (SELECT count(*) FROM UserVote WHERE idCommentable = old.idCommentable AND voteVal = 1) WHERE Commentable.idCommentable = old.idCommentable;
+    UPDATE Commentable SET n_downvotes = (SELECT count(*) FROM UserVote WHERE idCommentable = old.idCommentable AND voteVal =-1) WHERE Commentable.idCommentable = old.idCommentable;
     UPDATE GameItUser SET n_points = (SELECT sum(n_upvotes)-sum(n_downvotes) FROM Commentable WHERE idUser = (SELECT Commentable.idUser FROM Commentable, UserVote WHERE UserVote.idCommentable = Commentable.idCommentable)) WHERE GameItUser.idUser = (SELECT Commentable.idUser FROM Commentable, UserVote WHERE UserVote.idCommentable = Commentable.idCommentable);
 END;
 

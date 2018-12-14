@@ -1,6 +1,9 @@
+<?php
+  include_once('../database/dbUsers.php');
+?>
+
 <?php function draw_stories($stories) {
 ?>
-    <script src="../javascript/votes.js" defer></script>
         
     <section id="stories_content">
         
@@ -13,9 +16,7 @@
                 <?php } ?>
             <p>Published: <?=$story['dateC']?><br></p>
             <p><?=$story['N_Comments']?> Comments<br></p>
-            <img class="up-vote"  data-id="<?=$story['id']?>" src = "../img/utilities/upvote.png" alt="Upvote" width="20" height="20">
-            <a class="vote-number" data-id="<?=$story['id']?>"><?=$story['votes']?></a>
-            <img class="down-vote"  data-id="<?=$story['id']?>" src = "../img/utilities/downvote.png" alt="Downvote" width="20" height="20">
+            <?php draw_votes($story['id'],$story['votes']); ?>
             <div class="author">
                     <?php $imgPath = "../img/profiles_thumbnail/" . $story['username']. ".jpg";
                     if(!file_exists($imgPath)){
@@ -37,7 +38,6 @@
 <?php function draw_story($story) {
 
 ?>
-    <script src="../javascript/votes.js" defer></script>
     <script src="../javascript/reply.js" defer></script>
     
     <section id="stories_sec">    
@@ -51,10 +51,7 @@
                 <p><?=$story['textC']?><br></p>
                 <p>Published: <?=$story['dateC']?><br></p>
                 <p class="comments_count"><?=$story['N_Comments']?> Comments<br></p>
-                <img class="up-vote"  data-id="<?=$story['id']?>" src = "../img/utilities/upvote.png" alt="Upvote" width="20" height="20">
-                <a class="vote-number" data-id="<?=$story['id']?>"><?=$story['votes']?></a>
-                <img class="down-vote"  data-id="<?=$story['id']?>" src = "../img/utilities/downvote.png" alt="Downvote" width="20" height="20">
-                
+                <?php draw_votes($story['id'],$story['votes']); ?>
                 <div class="author">
                     <?php $imgPath = "../img/profiles_thumbnail/" . $story['username']. ".jpg";
                     if(!file_exists($imgPath)){
@@ -116,3 +113,40 @@
         <?php } else{ 
             echo "</section>";
             return true;}}?>
+
+
+
+<?php function draw_votes($idStory,$num) {
+
+    if(isset($_SESSION['username'])){
+        $username = $_SESSION['username'];
+        $user = getUser($username);
+        $userId = $user['idUser'];
+        $ret = getVote($idStory,$userId);
+        $value = $ret['voteVal']; 
+        if($value == false){
+        $upvote = "../img/utilities/upvotegrey.png";
+        $downvote = "../img/utilities/downvotegrey.png";
+        }
+        else if($value =="1"){
+            $upvote = "../img/utilities/upvote.png";
+            $downvote = "../img/utilities/downvotegrey.png";
+        }
+        else if($value =="-1"){
+            $upvote = "../img/utilities/upvotegrey.png";
+            $downvote = "../img/utilities/downvote.png";
+        }
+    }
+    else{
+        $username = "null";
+        $upvote = "../img/utilities/upvotegrey.png";
+        $downvote = "../img/utilities/downvotegrey.png";
+    }
+?>
+<script src="../javascript/votes.js" defer></script>
+
+    <img class="up-vote"  data-id="<?=$idStory?>" data-user="<?=$username?>" src = "<?=$upvote?>" alt="Upvote" width="20" height="20">
+    <a class="vote-number" data-id="<?=$idStory?>"><?=$num?></a>
+    <img class="down-vote"  data-id="<?=$idStory?>" data-user="<?=$username?>" src = "<?=$downvote?>" alt="Downvote" width="20" height="20">
+            
+<?php } ?>
