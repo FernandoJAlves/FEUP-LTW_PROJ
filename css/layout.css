@@ -37,11 +37,11 @@ body > aside {
     grid-area: 3 / 2;
     min-width: 20em;
     max-width: 20em;
-    position: fixed;
+    /*position: fixed;
     z-index: 1;
     top: 12em;
     right: 12.5em;
-    overflow-x: hidden;
+    overflow-x: hidden;*/
 
 }
 
@@ -60,3 +60,9 @@ body > header div#signup div{
     flex: 1;
 }
 
+
+/* search bar */
+
+body header #searchBar #searchform{
+    float: right;
+}
