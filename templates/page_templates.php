@@ -39,7 +39,7 @@
             $imgPath = "../img/profiles_thumbnail/generic.png";
           } ?>
           <img src = <?=$imgPath ?> alt="Excuse">
-          <a href="profile.php"><?= $username?></a>
+          <a href="profile.php?username=<?=$username?>"><?= $username?></a>
           </div>
           <div>
           <a href="../actions/action_logout.php">Logout</a>
@@ -111,9 +111,12 @@
 ?>
     <section id="profile_content">
       <article>
+        <?php if(isset($_SESSION['username'])){
+        if($user['username'] == $_SESSION['username']){ ?>
         <a href="edit_profile.php">Edit Profile</a>
+        <?php }} ?>
         <h1><?=$user['username']?></h1>
-        <?php $imgPath = "../img/profiles/" . $_SESSION['username']. ".jpg";
+        <?php $imgPath = "../img/profiles/" . $user['username']. ".jpg";
         if(!file_exists($imgPath)){
           $imgPath = "../img/profiles/generic.png";
         }

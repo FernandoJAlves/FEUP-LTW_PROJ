@@ -23,7 +23,7 @@
                     $imgPath = "../img/profiles_thumbnail/generic.png";
                     } ?>
                     <img src = <?=$imgPath ?> alt="Excuse">
-                    <p><?=$story['username']?><br></p>
+                    <a href="../pages/profile.php?username=<?=$story['username']?>"><?=$story['username']?><br></a>
             </div>
             <br>
         </div>      
@@ -58,7 +58,7 @@
                     $imgPath = "../img/profiles_thumbnail/generic.png";
                     } ?>
                     <img src = <?=$imgPath ?> alt="Excuse">
-                    <p><?=$story['username']?><br></p>
+                    <a href="../pages/profile.php?username=<?=$story['username']?>"><?=$story['username']?><br></a>
                 </div>
                 <p data-id="<?=$story['id']?>" class="reply">Reply</p>
                 <br>
@@ -99,7 +99,7 @@
                     $imgPath = "../img/profiles_thumbnail/generic.png";
                     } ?>
                     <img src ="<?=$imgPath?>" alt="Excuse">
-                    <p><?=$comment['username']?>:<br></p>
+                    <a href="../pages/profile.php?username=<?=$comment['username']?>"><?=$comment['username']?>:<br></a>
                     </div>
                     <p><?=$comment['textC']?><br></p>
                     <p>Published: <?=$comment['dateC']?><br></p>
