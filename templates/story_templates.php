@@ -12,18 +12,19 @@
             <a href="../pages/story.php?id=<?=$story['id']?>"> <?=$story['title']?> <br></a>
             <?php $imgPath = "../img/thumbnails/".$story['id'].".jpg";
                 if(file_exists($imgPath)){ ?>
-                  <img src =<?=$imgPath ?> alt="Excuse">
+                  <br><img src =<?=$imgPath ?> alt="Excuse">
                 <?php } ?>
             <p>Published: <?=$story['dateC']?><br></p>
             <p><?=$story['N_Comments']?> Comments<br></p>
             <?php draw_votes($story['id'],$story['votes']); ?>
+            <br>
             <div class="author">
                     <?php $imgPath = "../img/profiles_thumbnail/" . $story['username']. ".jpg";
                     if(!file_exists($imgPath)){
                     $imgPath = "../img/profiles_thumbnail/generic.png";
                     } ?>
                     <img src = <?=$imgPath ?> alt="Excuse">
-                    <a href="../pages/profile.php?username=<?=$story['username']?>"><?=$story['username']?><br></a>
+                    <a href="../pages/profile.php?username=<?=$story['username']?>">Author: <?=$story['username']?><br></a>
             </div>
             <br>
         </div>      
@@ -52,14 +53,16 @@
                 <p>Published: <?=$story['dateC']?><br></p>
                 <p class="comments_count"><?=$story['N_Comments']?> Comments<br></p>
                 <?php draw_votes($story['id'],$story['votes']); ?>
+                <br>
                 <div class="author">
                     <?php $imgPath = "../img/profiles_thumbnail/" . $story['username']. ".jpg";
                     if(!file_exists($imgPath)){
                     $imgPath = "../img/profiles_thumbnail/generic.png";
                     } ?>
                     <img src = <?=$imgPath ?> alt="Excuse">
-                    <a href="../pages/profile.php?username=<?=$story['username']?>"><?=$story['username']?><br></a>
+                    <a href="../pages/profile.php?username=<?=$story['username']?>">Author: <?=$story['username']?><br></a>
                 </div>
+                <br>
                 <p data-id="<?=$story['id']?>" class="reply">Reply</p>
                 <br>
             </div>      
@@ -144,9 +147,9 @@
     }
 ?>
 <script src="../javascript/votes.js" defer></script>
-
-    <img class="up-vote"  data-id="<?=$idStory?>" data-user="<?=$username?>" src = "<?=$upvote?>" alt="Upvote" width="20" height="20">
-    <a class="vote-number" data-id="<?=$idStory?>"><?=$num?></a>
-    <img class="down-vote"  data-id="<?=$idStory?>" data-user="<?=$username?>" src = "<?=$downvote?>" alt="Downvote" width="20" height="20">
-            
+    <section id = "votesContent">
+        <img class="up-vote"  data-id="<?=$idStory?>" data-user="<?=$username?>" src = "<?=$upvote?>" alt="Upvote" width="20" height="20">
+        <a class="vote-number" data-id="<?=$idStory?>"><?=$num?></a>
+        <img class="down-vote"  data-id="<?=$idStory?>" data-user="<?=$username?>" src = "<?=$downvote?>" alt="Downvote" width="20" height="20">
+    </section>      
 <?php } ?>

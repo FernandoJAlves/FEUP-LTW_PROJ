@@ -22,7 +22,8 @@ header a {
 /* header */
 
 body > header {
-    background-color: #2a9fff;
+    background-image: linear-gradient(to bottom, #2a9fff, #77bbe9);
+    /*background-color: #2a9fff;*/
     padding: 1em;
     border-bottom: 1px solid white;
   }
@@ -66,34 +67,42 @@ body > header div#session > div img{
 }
 
 body > header div#session > div a{
-    /*display:inline-block;*/
     color:black;
     width:100%;
     height:100%;
     font-size: 1em;
+    text-decoration: none;
 }
 
-body > header div#session > div a{
+#session > div:first-of-type a{
     text-align: center;
-    vertical-align: 0.15em;
+    vertical-align: 0.2em;
 }
 
-body > header div#session > div a{
-    color: black;
-	text-decoration: none;
-}
 
-body > header div#session > div a:hover{
+#session > div:first-of-type a:hover{
 	color: white;
     transition: 0.4s;
 }
   
-body > header div#session > div:nth-of-type(2){
+#session > div:nth-of-type(2){
+    margin: 1px solid black;
+}
+
+#session > div:nth-of-type(2) a{
     background-color: white;
     text-align: center;
+    align-content: center;
     list-style-type: none;
     border-radius: 0.3em;
-    margin: 2px solid black;
+    padding: 0 1em 0 1em;
+}
+
+#session > div:nth-of-type(2) a:hover{
+    background-color: black;
+	color: white;
+    transition: 0.4s;
+    content: 'Dont Leave';
 }
 
 
@@ -122,12 +131,56 @@ body > header div#session > div:nth-of-type(2){
 
 /* stories content */
 
-body > section#stories_content > div {
+#stories_content > div {
     background-color: white;
     border-radius: 0.2em;
     padding: 1em;
     margin: 1em;
 } 
+
+#stories_content > div > a {
+    text-decoration: none;
+    color: black;
+}
+
+#stories_content > div > a:first-of-type {
+    font-size: 1.5em;
+    color: black;
+}
+
+#stories_content > div > a:first-of-type:hover {
+    color: #373b3d;
+}
+
+#stories_content .author {
+    display: grid;
+    grid-template-columns: auto auto;
+    float: left;
+}
+
+#stories_content .author img{
+    border-radius: 0.3em;
+}
+
+#stories_content .author a{
+    text-decoration: none;
+    color: black;
+    padding: 0.25em 1em 0 1em;
+}
+
+
+
+#stories_sec #stories_content h1{
+    margin: 0em;
+    padding: 0 0 1em 0;
+}
+
+#stories_sec #stories_content > div > p:nth-of-type(2) {
+    border-top: 1px solid black;
+    padding-top: 0.5em;
+}
+
+
 
 /* home content */
 
@@ -138,12 +191,15 @@ body > section#home_content > article {
     margin-right: 1em;
 } 
 
-body > section#stories_content > div > a {
-    text-decoration: none;
-    color: black;
-}
+
 
 /* comments content */
+
+#stories_sec #comments_content > a {
+    font-size: 1.5em;
+    color: black;
+    margin: 1em 0 0 1em;
+}
 
 .comments  {
     padding: 1em;
@@ -152,9 +208,30 @@ body > section#stories_content > div > a {
 .comments > div {
     padding: 1em;
     border-color: black;
-    border-style: solid;
+    border-style: dashed;
     border-width: 0.1em;
+    border-radius: 0.3em;
 } 
+
+#comments_content .author a{
+    text-decoration: none;
+    color: black;
+    padding: 0em 1em 0 0.5em;
+    vertical-align: 0.2em;
+}
+
+#comments_content .reply{
+    cursor:pointer;
+    margin: 1em 0 0 0;
+    font: bold;
+    color: #2909db;
+}
+
+#comments_content .comments > div > p:nth-of-type(2) {
+    border-top: 1px solid black;
+    padding-top: 0.5em;
+}
+
 
 /* aside */
 
@@ -240,6 +317,9 @@ body > section > form * {
 /* Reply Button */
 .reply{
     cursor:pointer;
+    margin: 1.5em 0 0 0;
+    font: bold;
+    color: #2909db;
 }
 
 
