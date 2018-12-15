@@ -5,9 +5,7 @@ body > nav{
     display: flex;
 }
 
-body > nav li{
-    /*flex: 1;*/
-}
+
  
 /* grid */
 

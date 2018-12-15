@@ -199,15 +199,14 @@
 <script src="../javascript/image.js" defer></script>
 <section id="post_content">
         <form id="postform" action="../actions/action_add_story.php" method="post" enctype="multipart/form-data">
-            <div>Title: <input type="text" name="title"><br></div>
-            <br>
+            <div><input id="title_input" type="text" name="title" placeholder="Insert Title"><br></div>    
             <img src = "" class="imgProfile">
-            <p>Story Image: <Input class="imgInput" type="file" name="image"><p>
+            <p>Story Image: <Input class="imgInput" type="file" name="image"></p>
             <br>
-            <a>Write you story:<br><br></a>
+            <!--<a>Write you story:<br><br></a>-->
             <textarea name="story" id="postform" cols="100" rows="10" placeholder="Enter text here..."></textarea>
-            <br><br>
-            <input type="submit" value="Post">
+            <br>
+            <input id="post_input" type="submit" value="Post">
         </form>      
         
     </section>

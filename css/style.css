@@ -344,3 +344,41 @@ body header #searchBar #searchform input{
     border-radius: 0.2em;
     border-style: solid;
 }
+
+
+/* post */
+
+#post_content{
+    margin: 1em;
+    background-color: white;
+}
+
+#post_content form#postform div input#title_input{
+    min-width: 30em;
+    max-width: 30em;
+    font-family: "Georgia", serif;
+    line-height: 1.4em;
+    margin: 0;
+}
+
+#post_content form#postform div {
+    margin: 0;
+    padding: 0.2em;
+}
+
+#post_content form#postform p {
+    margin: 0;
+    padding: 0.2em;
+}
+
+#post_content form#postform textarea#postform{
+    min-width: 30em;
+    max-width: 30em;
+    font-family: "Georgia", serif;
+    line-height: 1.4em;
+}
+
+#post_content form#postform input#post_input{
+    float: right;
+
+}
