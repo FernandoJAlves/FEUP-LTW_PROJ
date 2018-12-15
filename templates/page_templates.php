@@ -129,6 +129,7 @@
         <p>Age: <?=$user['age']?></p>
         <p>Gameit Points: <?=$user['n_points']?></p>
         <p>Description: <?=$user['descriptionUser']?></p>
+        </article> 
         <section id="activities">
           <h2>Activities</h2>
           <?php $commentables = getCommentables($user['idUser']); 
@@ -140,26 +141,22 @@
                       if(file_exists($imgPath)){ ?>
                         <img src =<?=$imgPath ?> alt="Excuse">
                       <?php } ?>
-                  <p>Published: <?=$story['dateC']?><br></p>
                   <p><?=$story['N_Comments']?> Comments<br></p>
-                  <br>
+                  <p>Published: <?=$story['dateC']?><br></p>
                 </div>                    
               <?php }
               else if ($comment = getComment($commentable['id'])){ 
-                $story = getCommentStory($comment['id'])?>
+                $story = getCommentStory($comment['id']) ?>
                 <div class="comment"> 
-                  <div>
-                      <a href="../pages/story.php?id=<?=$story['id']?>">In Story: <?= $story['title']?> <br></a>
-                      <p><?=$comment['textC']?><br></p>
-                      <p>Published: <?=$comment['dateC']?><br></p>
-                  </div>    
+                    <a href="../pages/story.php?id=<?=$story['id']?>">In Story: <?= $story['title']?> <br></a>
+                    <p><?=$comment['textC']?><br></p>
+                    <p>Published: <?=$comment['dateC']?><br></p>   
                 </div>
               <?php }
-
             }
           ?>
         </section>
-      </article>        
+             
     </section>
 
 

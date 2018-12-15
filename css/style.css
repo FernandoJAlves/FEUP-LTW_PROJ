@@ -382,3 +382,63 @@ body header #searchBar #searchform input{
     float: right;
 
 }
+
+
+/* profile */
+
+#activities h2{
+    margin: 0 0 0 0.8em;
+}
+
+#activities div.story {
+    background-color: white;
+    border-radius: 0.2em;
+    padding: 1em;
+    margin: 1em;
+} 
+
+#activities div.story > a {
+    text-decoration: none;
+    color: black;
+}
+
+#activities div.story > a:first-of-type {
+    font-size: 1.5em;
+    color: black;
+}
+
+#activities div.story > a:first-of-type:hover {
+    color: #373b3d;
+}
+
+#activities div.story > p:nth-of-type(2) {
+    border-top: 1px solid black;
+    padding-top: 0.6em;
+}
+
+
+#activities div.comment {
+    margin: 1em;
+    padding: 1em;
+    border-color: black;
+    border-style: dashed;
+    border-width: 0.1em;
+    border-radius: 0.3em;
+    background-color: aliceblue;
+} 
+
+#activities div.comment a{
+    text-decoration: none;
+    color: black;
+    font-size: 1.5em;
+} 
+
+#activities div.comment > a:first-of-type:hover {
+    color: #373b3d;
+}
+
+#activities div.comment > p:nth-of-type(2) {
+    border-top: 1px solid black;
+    padding-top: 0.6em;
+}
+
