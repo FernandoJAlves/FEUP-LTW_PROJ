@@ -31,29 +31,41 @@ body > header {
 body > header h1, body > header h2{
     margin: 0;
 }
+
+body > header h1 a:hover{
+    color: white;
+    transition: 0.4s;
+}
   
 body > header a {
     color: black;
     text-decoration: none;  
 }
 
-body > header div#signup div{
+body > header div#signup div#signupButtons{
+    display: grid;
+    float: left;
+}
+
+body > header div#signup div div:first-of-type, body > header div#signup div div:nth-of-type(2){
     background-color: rgb(255, 255, 255);
-    margin: 1em;
-    padding: 1em;
+    margin: 0.5em 0 0.5em 0.5em;
+    
+    padding: 0.2em 0 0.2em 0 ;
     text-align: center;
     border-radius: 0.3em;
     border-color: black;
-    border-style: solid;   
+    border-style: solid;
+    float: left;
 }
 
 body > header div#signup > div a{
-    /*padding-top: 0.6em;*/
-    display:inline-block;
+    padding: 0.6em;
     color:black;
     width:100%;
     height:100%;
     font-size: 1em;
+    text-align: center;
 }
 
 body > header div#session{
@@ -84,9 +96,9 @@ body > header div#session > div a{
 	color: white;
     transition: 0.4s;
 }
-  
+
 #session > div:nth-of-type(2){
-    margin: 1px solid black;
+    margin: 0.4em 0 0 0;
 }
 
 #session > div:nth-of-type(2) a{
@@ -96,13 +108,14 @@ body > header div#session > div a{
     list-style-type: none;
     border-radius: 0.3em;
     padding: 0 1em 0 1em;
+    border: 2px solid black;
 }
 
 #session > div:nth-of-type(2) a:hover{
     background-color: black;
 	color: white;
     transition: 0.4s;
-    content: 'Dont Leave';
+    /*border: 1px solid white;*/
 }
 
 
@@ -211,6 +224,7 @@ body > section#home_content > article {
     border-style: dashed;
     border-width: 0.1em;
     border-radius: 0.3em;
+    background-color: aliceblue;
 } 
 
 #comments_content .author a{
