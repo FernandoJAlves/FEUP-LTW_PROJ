@@ -96,6 +96,31 @@
     return $stmt->fetchAll();
   }
 
+  function getComment($commentId) {
+    $db = Database::instance()->db();
+    $cmd = 'SELECT Comment.idComment as id, Commentable.textC as textC, Commentable.dateC as dateC, GameItUser.username as username
+    FROM Comment 
+    LEFT JOIN Commentable ON Comment.idComment = Commentable.idCommentable
+    LEFT JOIN GameItUser ON Commentable.idUser = GameItUser.idUser
+    WHERE Comment.idComment = ? 
+    GROUP BY Comment.idComment
+    ORDER BY Commentable.dateC DESC';
+    $stmt = $db->prepare($cmd);
+    $stmt->execute(array($commentId));
+    return $stmt->fetch();
+  }
+
+  function getCommentables($userId){
+    $db = Database::instance()->db();
+    $cmd = 'SELECT Commentable.idCommentable as id, Commentable.dateC
+    FROM Commentable
+    WHERE Commentable.idUser = ? 
+    ORDER BY Commentable.dateC DESC';
+    $stmt = $db->prepare($cmd);
+    $stmt->execute(array($userId));
+    return $stmt->fetchAll();
+  }
+
   function getPoints($commentableId){
     $db = Database::instance()->db();
     $cmd = 'SELECT (Commentable.n_upvotes - Commentable.n_downvotes) as points
@@ -175,6 +200,25 @@
     $stmt = $db->prepare('UPDATE UserVote SET voteVal = ? WHERE idUser = ? AND idCommentable = ?');
     $ret = $stmt->execute(array($value,$userId,$id));
     return $ret;
+  }
+
+  function getCommentParent($commentId){
+    $db = Database::instance()->db();
+    $cmd = 'SELECT Comment.idParent as id
+    FROM Comment 
+    WHERE Comment.idComment = ?';
+    $stmt = $db->prepare($cmd);
+    $stmt->execute(array($commentId));
+    return $stmt->fetch();
+  }
+
+  function getCommentStory($commentId){
+    $parent = getCommentParent($commentId);
+    $parentId = $parent['id'];
+    if($ret = getStory($parentId)){
+      return $ret;
+    }
+    else return getCommentStory($parentId);
   }
 
 ?>

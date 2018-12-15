@@ -1,5 +1,6 @@
 <?php
   include_once('../includes/session.php');
+  include_once('../database/dbQueries.php');
 ?>
 
 
@@ -128,6 +129,36 @@
         <p>Age: <?=$user['age']?></p>
         <p>Gameit Points: <?=$user['n_points']?></p>
         <p>Description: <?=$user['descriptionUser']?></p>
+        <section id="activities">
+          <h2>Activities</h2>
+          <?php $commentables = getCommentables($user['idUser']); 
+            foreach($commentables as $commentable){
+              if($story = getStory($commentable['id'])){ ?>
+                <div class="story">
+                  <a href="../pages/story.php?id=<?=$story['id']?>"> <?=$story['title']?> <br></a>
+                  <?php $imgPath = "../img/thumbnails/".$story['id'].".jpg";
+                      if(file_exists($imgPath)){ ?>
+                        <img src =<?=$imgPath ?> alt="Excuse">
+                      <?php } ?>
+                  <p>Published: <?=$story['dateC']?><br></p>
+                  <p><?=$story['N_Comments']?> Comments<br></p>
+                  <br>
+                </div>                    
+              <?php }
+              else if ($comment = getComment($commentable['id'])){ 
+                $story = getCommentStory($comment['id'])?>
+                <div class="comment"> 
+                  <div>
+                      <a href="../pages/story.php?id=<?=$story['id']?>">In Story: <?= $story['title']?> <br></a>
+                      <p><?=$comment['textC']?><br></p>
+                      <p>Published: <?=$comment['dateC']?><br></p>
+                  </div>    
+                </div>
+              <?php }
+
+            }
+          ?>
+        </section>
       </article>        
     </section>
 
