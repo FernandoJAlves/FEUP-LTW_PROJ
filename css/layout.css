@@ -52,13 +52,7 @@ body > footer {
 
 /* login */
 
-body > header div#signup{
-    display: flex;
-}
 
-body > header div#signup div{
-    flex: 1;
-}
 
 
 /* search bar */

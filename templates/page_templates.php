@@ -25,11 +25,13 @@
         <h1><a href="home.php">GameIt</a></h1>
         <?php if ($username == NULL) { ?>
         <div id="signup">
-          <div>
-          <a href="register.php">Register</a>
-          </div>
-          <div>
-          <a href="login.php">Login</a>
+          <div id="signupButtons">
+            <div>
+            <a href="register.php">Register</a>
+            </div>
+            <div>
+            <a href="login.php">Login</a>
+            </div>
           </div>
         <?php } 
         else { ?>
