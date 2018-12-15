@@ -106,7 +106,7 @@
     GROUP BY Comment.idComment
     ORDER BY Commentable.dateC DESC';
     $stmt = $db->prepare($cmd);
-    $stmt->execute(array($storyId));
+    $stmt->execute(array($commentId));
     return $stmt->fetch();
   }
 
@@ -117,7 +117,7 @@
     WHERE Commentable.idUser = ? 
     ORDER BY Commentable.dateC DESC';
     $stmt = $db->prepare($cmd);
-    $stmt->execute(array($storyId));
+    $stmt->execute(array($userId));
     return $stmt->fetchAll();
   }
 
@@ -200,6 +200,25 @@
     $stmt = $db->prepare('UPDATE UserVote SET voteVal = ? WHERE idUser = ? AND idCommentable = ?');
     $ret = $stmt->execute(array($value,$userId,$id));
     return $ret;
+  }
+
+  function getCommentParent($commentId){
+    $db = Database::instance()->db();
+    $cmd = 'SELECT Comment.idParent as id
+    FROM Comment 
+    WHERE Comment.idComment = ?';
+    $stmt = $db->prepare($cmd);
+    $stmt->execute(array($commentId));
+    return $stmt->fetch();
+  }
+
+  function getCommentStory($commentId){
+    $parent = getCommentParent($commentId);
+    $parentId = $parent['id'];
+    if($ret = getStory($parentId)){
+      return $ret;
+    }
+    else return getCommentStory($parentId);
   }
 
 ?>
