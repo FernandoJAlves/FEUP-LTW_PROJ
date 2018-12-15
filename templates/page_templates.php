@@ -1,5 +1,6 @@
 <?php
   include_once('../includes/session.php');
+  include_once('../database/dbQueries.php');
 ?>
 
 
@@ -126,6 +127,28 @@
         <p>Age: <?=$user['age']?></p>
         <p>Gameit Points: <?=$user['n_points']?></p>
         <p>Description: <?=$user['descriptionUser']?></p>
+        <section id="activities">
+          <?php $commentables = getCommentables($user['id']); 
+            foreach($commentables as $commentable){
+              if($story = getStory($commentable['id'])){ ?>
+                <div>
+                  <a href="../pages/story.php?id=<?=$story['id']?>"> <?=$story['title']?> <br></a>
+                  <?php $imgPath = "../img/thumbnails/".$story['id'].".jpg";
+                      if(file_exists($imgPath)){ ?>
+                        <img src =<?=$imgPath ?> alt="Excuse">
+                      <?php } ?>
+                  <p>Published: <?=$story['dateC']?><br></p>
+                  <p><?=$story['N_Comments']?> Comments<br></p>
+                  <br>
+                </div>                    
+              <?php }
+              else if ($comment = getComment($commentable['id'])){ ?>
+
+              <?php }
+
+            }
+          ?>
+        </section>
       </article>        
     </section>
 

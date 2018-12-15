@@ -96,6 +96,31 @@
     return $stmt->fetchAll();
   }
 
+  function getComment($commentId) {
+    $db = Database::instance()->db();
+    $cmd = 'SELECT Comment.idComment as id, Commentable.textC as textC, Commentable.dateC as dateC, GameItUser.username as username
+    FROM Comment 
+    LEFT JOIN Commentable ON Comment.idComment = Commentable.idCommentable
+    LEFT JOIN GameItUser ON Commentable.idUser = GameItUser.idUser
+    WHERE Comment.idComment = ? 
+    GROUP BY Comment.idComment
+    ORDER BY Commentable.dateC DESC';
+    $stmt = $db->prepare($cmd);
+    $stmt->execute(array($storyId));
+    return $stmt->fetch();
+  }
+
+  function getCommentables($userId){
+    $db = Database::instance()->db();
+    $cmd = 'SELECT Commentable.idCommentable as id, Commentable.dateC
+    FROM Commentable
+    WHERE Commentable.idUser = ? 
+    ORDER BY Commentable.dateC DESC';
+    $stmt = $db->prepare($cmd);
+    $stmt->execute(array($storyId));
+    return $stmt->fetchAll();
+  }
+
   function getPoints($commentableId){
     $db = Database::instance()->db();
     $cmd = 'SELECT (Commentable.n_upvotes - Commentable.n_downvotes) as points
