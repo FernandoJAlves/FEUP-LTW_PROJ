@@ -19,6 +19,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link href="../css/style.css" rel="stylesheet">
       <link href="../css/layout.css" rel="stylesheet">
+      <link href="../css/profile.css" rel="stylesheet">
     </head>
     <body>
       <header>
@@ -26,12 +27,8 @@
         <?php if ($username == NULL) { ?>
         <div id="signup">
           <div id="signupButtons">
-            <div>
-            <a href="register.php">Register</a>
-            </div>
-            <div>
-            <a href="login.php">Login</a>
-            </div>
+            <button onclick="window.location.href='register.php'">Register</button>
+            <button onclick="window.location.href='login.php'">Login</button>
           </div>
         <?php } 
         else { ?>
@@ -44,9 +41,7 @@
           <img src = <?=$imgPath ?> alt="Excuse">
           <a href="profile.php?username=<?=$username?>"><?= $username?></a>
           </div>
-          <div>
-          <a href="../actions/action_logout.php">Logout</a>
-          </div>
+          <button onclick="window.location.href='../actions/action_logout.php'">Logout</button>
         </div>
         <?php } ?>
         <div id="searchBar">
@@ -125,7 +120,7 @@
         }
         ?>
         <img src = <?=$imgPath ?> alt="Excuse">
-        <p>E-mail Address: <?=$user['email']?></p>
+        <p>E-mail: <?=$user['email']?></p>
         <p>Age: <?=$user['age']?></p>
         <p>Gameit Points: <?=$user['n_points']?></p>
         <p>Description: <?=$user['descriptionUser']?></p>
@@ -202,17 +197,17 @@
 ?>
     <aside>
     <?php if(isset($_SESSION['username'])){ ?>
-      <div id="create_post">
-        <a href="create_post.php">Create a post</a>
+      <div id="create_post" onclick="location.href='create_post.php';">
+        <a>Create a post</a>
       </div>
     <?php } ?>
 
   <?php if(basename($_SERVER['PHP_SELF']) != 'home.php'){ ?>
       <div id="links">
-        <div id="home">
+        <div id="home" onclick="location.href='home.php';">
           <a href="home.php">Home</a>
         </div>
-        <div id="top">
+        <div id="top" onclick="location.href='#';">
           <a href="#">Top</a>
         </div> 
       </div>

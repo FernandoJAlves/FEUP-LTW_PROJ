@@ -12,8 +12,8 @@ body > nav{
 body {
     background-color: rgb(236, 236, 236);
     margin: 0 auto;
-    max-width: 60em;
-    min-width: 60em;
+    max-width: 65em;
+    min-width: 65em;
   
     display: grid;
 }
