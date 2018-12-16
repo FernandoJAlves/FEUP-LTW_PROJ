@@ -1,7 +1,6 @@
 /* fonts  */  
 
 
-
 body {
     font-family: 'Verdana', sans-serif;
 }
@@ -19,6 +18,10 @@ header a {
     font-size: 0.8em;
 }
   
+/* all a */
+
+a {outline : none;}
+
 /* header */
 
 body > header {
@@ -224,10 +227,17 @@ body > section#home_content > article h1 {
 
 /* comments content */
 
-#stories_sec #comments_content > a {
+#stories_sec #comments_content > a:first-of-type {
     font-size: 1.5em;
     color: black;
     margin: 1em 0 0 1em;
+}
+
+#stories_sec #comments_content > a:nth-of-type(2) {
+    font-size: 1em;
+    color: black;
+    margin: 1em;
+    padding: 1em;
 }
 
 .comments  {
@@ -262,6 +272,9 @@ body > section#home_content > article h1 {
     padding-top: 0.5em;
 }
 
+#comments_content div#no_com{
+    margin: 0em 2em 2em 2em;
+}
 
 /* aside */
 
@@ -363,7 +376,13 @@ body > section > form * {
     margin: 0.2em;
 }
 
+#register_content > form > input{
+    width: 20em;
+}
 
+#register_content label#message{
+    /*text-align: center;*/
+}
 
 /* Reply Button */
 .reply{
@@ -388,6 +407,12 @@ body header #searchBar #searchform input{
 #post_content{
     margin: 1em;
     background-color: white;
+}
+
+form#postform{
+    text-align: left;
+    padding: 4em;
+    border-radius: 0.2em;
 }
 
 #post_content form#postform div input#title_input{
@@ -478,6 +503,13 @@ body header #searchBar #searchform input{
     border-top: 1px solid black;
     padding-top: 0.6em;
 }
+
+/*
+#commentform {
+    min-width: 40em;
+    max-width: 40em;
+}
+*/
 
 textarea {
     resize: none;
