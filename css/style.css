@@ -22,7 +22,7 @@ header a {
 /* header */
 
 body > header {
-    background-image: linear-gradient(to bottom, #2a9fff, #77bbe9);
+    background-image: linear-gradient(to bottom, #2a9fff, #195f8d);
     /*background-color: #2a9fff;*/
     padding: 1em;
     border-bottom: 1px solid white;
@@ -47,16 +47,20 @@ body > header div#signup div#signupButtons{
     float: left;
 }
 
-body > header div#signup div div:first-of-type, body > header div#signup div div:nth-of-type(2){
+body > header div#signup div button:first-of-type, body > header div#signup div button:nth-of-type(2){
     background-color: rgb(255, 255, 255);
-    margin: 0.5em 0 0.5em 0.5em;
-    
-    padding: 0.2em 0 0.2em 0 ;
+    margin: 0.25em 0 0.25em 0;
+    padding: 0.5em 1em 0.5em 1em;
     text-align: center;
     border-radius: 0.3em;
     border-color: black;
     border-style: solid;
-    float: left;
+}
+
+body > header div#signup div button:first-of-type:hover, body > header div#signup div button:nth-of-type(2):hover{
+    background-color: black;
+    color: white;
+    transition: 0.4s;
 }
 
 body > header div#signup > div a{
@@ -101,17 +105,17 @@ body > header div#session > div a{
     margin: 0.4em 0 0 0;
 }
 
-#session > div:nth-of-type(2) a{
-    background-color: white;
+#session > button{
+    background-color: rgb(255, 255, 255);
+    margin: 0.25em 0 0.25em 0;
+    padding: 0.5em 1em 0.5em 1em;
     text-align: center;
-    align-content: center;
-    list-style-type: none;
     border-radius: 0.3em;
-    padding: 0 1em 0 1em;
-    border: 2px solid black;
+    border-color: black;
+    border-style: solid;
 }
 
-#session > div:nth-of-type(2) a:hover{
+#session > button:hover{
     background-color: black;
 	color: white;
     transition: 0.4s;
@@ -138,17 +142,25 @@ body > header div#session > div a{
 
 #menu a:hover {
 	color: white;
-	background-color: #2a9fff;
-	transition: 0.4s;
+	background-color: #1c6799;
+	transition: 0.25s;
 }
 
 /* stories content */
 
 #stories_content > div {
     background-color: white;
+    border: 0.4px solid white;
     border-radius: 0.2em;
     padding: 1em;
     margin: 1em;
+    cursor: pointer;
+} 
+
+#stories_content > div:hover {
+    border-radius: 0.2em;
+    border: 0.4px solid #2a2f33;
+    cursor: pointer;
 } 
 
 #stories_content > div > a {
@@ -261,8 +273,14 @@ body > aside a{
 body > aside div#create_post{
     margin: 1em;
     padding: 1em;
-    background-color: #2a9fff;
+    background-color: #1f89e0;
+    cursor: pointer;
     border-radius: 0.2em;
+}
+
+body > aside div#create_post:hover {
+    background-color: #2a9fff;
+    cursor: pointer;
 }
 
 body > aside div#create_post > a{
@@ -272,9 +290,15 @@ body > aside div#create_post > a{
 #links #home{
     margin: 1em;
     padding: 1em;
-    background-color: white;
+    background-color: rgb(243, 243, 243);
     border: 1px solid #2a9fff;
+    cursor: pointer;
     border-radius: 0.2em;
+}
+
+#links #home:hover{
+    background-color: white;
+    cursor: pointer;
 }
 
 #links #home > a{
@@ -284,9 +308,15 @@ body > aside div#create_post > a{
 #links #top{
     margin: 1em;
     padding: 1em;
-    background-color: white;
+    background-color: rgb(243, 243, 243);
     border: 1px solid #2a9fff;
+    cursor: pointer;
     border-radius: 0.2em;
+}
+
+#links #top:hover{
+    background-color: white;
+    cursor: pointer;
 }
 
 #links #top > a{
@@ -308,6 +338,7 @@ body > footer p {
 /* login/register */
 
 body > section > form { 
+    text-align: right;
     padding-left: 5em;
     padding-right: 5em;
     padding-top: 3em;
@@ -327,6 +358,8 @@ body > section > form * {
     padding: 0.3em;
     margin: 0.2em;
 }
+
+
 
 /* Reply Button */
 .reply{
@@ -382,63 +415,3 @@ body header #searchBar #searchform input{
     float: right;
 
 }
-
-
-/* profile */
-
-#activities h2{
-    margin: 0 0 0 0.8em;
-}
-
-#activities div.story {
-    background-color: white;
-    border-radius: 0.2em;
-    padding: 1em;
-    margin: 1em;
-} 
-
-#activities div.story > a {
-    text-decoration: none;
-    color: black;
-}
-
-#activities div.story > a:first-of-type {
-    font-size: 1.5em;
-    color: black;
-}
-
-#activities div.story > a:first-of-type:hover {
-    color: #373b3d;
-}
-
-#activities div.story > p:nth-of-type(2) {
-    border-top: 1px solid black;
-    padding-top: 0.6em;
-}
-
-
-#activities div.comment {
-    margin: 1em;
-    padding: 1em;
-    border-color: black;
-    border-style: dashed;
-    border-width: 0.1em;
-    border-radius: 0.3em;
-    background-color: aliceblue;
-} 
-
-#activities div.comment a{
-    text-decoration: none;
-    color: black;
-    font-size: 1.5em;
-} 
-
-#activities div.comment > a:first-of-type:hover {
-    color: #373b3d;
-}
-
-#activities div.comment > p:nth-of-type(2) {
-    border-top: 1px solid black;
-    padding-top: 0.6em;
-}
-

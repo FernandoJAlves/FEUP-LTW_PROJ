@@ -1,0 +1,100 @@
+/* profile */
+
+body > section#profile_content > article > a {
+    margin: 1em;
+    color: #2909db;
+    text-decoration: none;
+    grid-area: 6 / 1 / span 1 / span 1;
+    text-align: center;
+}
+
+body > section#profile_content > article > h1 {
+    background-color: rgb(75, 75, 75);
+    border-bottom: 2px solid #2a9fff;
+    border-radius: 0.2em;
+    padding: 1em;
+    color: white;
+    grid-area: 1 / 1 / span 1 / span 2;
+}
+
+body > section#profile_content > article {
+    margin: 2em 0 2em 2em;
+    padding: 0;
+    background-color: white;
+    border-radius: 0.2em;
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+}
+
+body > section#profile_content > article > p {
+    margin: 0;
+    text-align: left;
+}
+
+body > section#profile_content > article > img{
+    border-radius: 0.2em;
+    margin-left: 2em;
+    grid-area: 2 / 1 / span 4 / span 1;
+    height: 225px;
+    width: auto;
+}
+
+/* activities */
+
+#activities h2{
+    margin: 0 0 0 0.8em;
+}
+
+#activities div.story {
+    background-color: white;
+    border-radius: 0.2em;
+    padding: 1em;
+    margin: 1em;
+} 
+
+#activities div.story > a {
+    text-decoration: none;
+    color: black;
+}
+
+#activities div.story > a:first-of-type {
+    font-size: 1.5em;
+    color: black;
+}
+
+#activities div.story > a:first-of-type:hover {
+    color: #373b3d;
+}
+
+#activities div.story > p:nth-of-type(2) {
+    border-top: 1px solid black;
+    padding-top: 0.6em;
+}
+
+
+#activities div.comment {
+    margin: 1em;
+    padding: 1em;
+    border-color: black;
+    border-style: dashed;
+    border-width: 0.1em;
+    border-radius: 0.3em;
+    background-color: aliceblue;
+} 
+
+#activities div.comment a{
+    text-decoration: none;
+    color: black;
+    font-size: 1.5em;
+} 
+
+#activities div.comment > a:first-of-type:hover {
+    color: #373b3d;
+}
+
+#activities div.comment > p:nth-of-type(2) {
+    border-top: 1px solid black;
+    padding-top: 0.6em;
+}
+

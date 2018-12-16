@@ -8,7 +8,7 @@
     <section id="stories_content">
         
         <?php foreach ($stories as $story){ ?>
-        <div>
+        <div onclick="location.href='../pages/story.php?id=<?=$story['id']?>';">
             <a href="../pages/story.php?id=<?=$story['id']?>"> <?=$story['title']?> <br></a>
             <?php $imgPath = "../img/thumbnails/".$story['id'].".jpg";
                 if(file_exists($imgPath)){ ?>
