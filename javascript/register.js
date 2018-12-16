@@ -12,7 +12,9 @@ function checkPassword(){
         if(message == null){
             message = document.createElement("label");
             message.setAttribute('id','message');
-            section.appendChild(message);
+            let div = document.createElement("div");
+            div.appendChild(message);
+            section.appendChild(div);
         }
         message.innerHTML = "The value of the password must be the same";
     }

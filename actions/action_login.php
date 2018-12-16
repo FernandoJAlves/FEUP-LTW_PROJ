@@ -5,10 +5,10 @@
   $password = $_POST['pass'];
   if (checkUserPassword($username, $password)) {
     $_SESSION['username'] = $username;
-    $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Logged in successfully!');
+    $_SESSION['messages'] = null;
     header('Location: ../pages/home.php');
   } else {
-    $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Login failed!');
+    $_SESSION['messages'] = 'Login failed!';
     header('Location: ../pages/login.php');
   }
 ?>

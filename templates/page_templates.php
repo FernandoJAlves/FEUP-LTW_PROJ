@@ -101,7 +101,11 @@
             <label> Password: </label> <input type="password" name="pass" required>
             <label> Confirm Password: </label> <input type="password" name="conf" required>
             <input type="submit" value="Sign Up">
-        </form>      
+        </form> 
+        <?php if(isset($_SESSION['messages']['type'])){?>
+          <div><label id="message"><?=$_SESSION['messages']['type']['content']?></label></div>
+        <?php }?>
+             
     </section>
 <?php } ?>
 

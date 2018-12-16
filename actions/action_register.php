@@ -31,15 +31,15 @@
          
         if($insert){
           $_SESSION['username'] = $name;
-          $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Signed up and logged in!');
-        }else{
-          $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to signup!');
+          $_SESSION['messages'] = null;
+          }else{
+          $_SESSION['messages'] = 'Failed to signup!';
         }
         header('Location: ../pages/home.php');
  
       }
       else{
-        $_SESSION['messages'][] = array('type' => 'error', 'content' => 'That username already exists');
+        $_SESSION['messages'] = 'That username already exists';
         die(header('Location: ../pages/register.php'));
       }
     }

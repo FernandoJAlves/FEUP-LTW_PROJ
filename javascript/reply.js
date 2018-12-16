@@ -17,7 +17,9 @@ function replyListener(event) {
         let text = document.createElement("textarea");
         text.setAttribute("name", "story");
         text.setAttribute("id", "commentform");
+        let width = div.clientWidth+"px";
         text.setAttribute("rows", "10");
+        text.style.width = width;
         text.setAttribute("placeholder", "Enter your text here...");
         text.required = true;
         form.appendChild(text);
