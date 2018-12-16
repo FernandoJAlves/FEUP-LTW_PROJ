@@ -20,6 +20,7 @@
       <link href="../css/style.css" rel="stylesheet">
       <link href="../css/layout.css" rel="stylesheet">
       <link href="../css/profile.css" rel="stylesheet">
+      <script src="../javascript/security.js" defer></script>
     </head>
     <body>
       <header>

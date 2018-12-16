@@ -95,7 +95,7 @@
         <section data-id="<?=$id?>" class="comments">
         <?php if(count($comments) > 0){ ?>
             <?php foreach ($comments as $comment){ ?>
-                <div>
+                <div data-id="<?=$comment['id']?>">
                     <div class="author">
                     <?php $imgPath = "../img/profiles_thumbnail/" . $comment['username']. ".jpg";
                     if(!file_exists($imgPath)){
