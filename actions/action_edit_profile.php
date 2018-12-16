@@ -2,11 +2,11 @@
   include_once('../database/dbUsers.php');
   include_once('../includes/session.php');
   include_once('action_upload.php');
-
     $username = $_SESSION['username'];
     $age = $_POST['age'];
     $description = $_POST['description'];
     $email = $_POST['email'];
+
 
     updateUser($username,$email,$age,$description);
 
@@ -33,6 +33,8 @@ if($_FILES['image']['name'])
     }
 
 }
+    
+    
     header('Location: ../pages/profile.php?username='.$username);
 
 ?>
