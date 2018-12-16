@@ -224,7 +224,7 @@ body > section#home_content > article {
     border-style: dashed;
     border-width: 0.1em;
     border-radius: 0.3em;
-    background-color: aliceblue;
+    background-color: rgb(188, 220, 247);
 } 
 
 #comments_content .author a{
@@ -424,7 +424,7 @@ body header #searchBar #searchform input{
     border-style: dashed;
     border-width: 0.1em;
     border-radius: 0.3em;
-    background-color: aliceblue;
+    background-color: rgb(188, 220, 247);
 } 
 
 #activities div.comment a{
