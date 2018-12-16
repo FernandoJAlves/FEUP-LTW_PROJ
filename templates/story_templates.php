@@ -6,7 +6,7 @@
 ?>
         
     <section id="stories_content">
-        
+    <script src="../javascript/votes.js" defer></script>
         <?php foreach ($stories as $story){ ?>
         <div onclick="location.href='../pages/story.php?id=<?=$story['id']?>';">
             <a href="../pages/story.php?id=<?=$story['id']?>"> <?=$story['title']?> <br></a>
@@ -40,7 +40,7 @@
 
 ?>
     <script src="../javascript/reply.js" defer></script>
-    
+    <script src="../javascript/votes.js" defer></script>
     <section id="stories_sec">    
         <section id="stories_content">
             <div id="commentable<?=$story['id']?>">
@@ -105,6 +105,7 @@
                     <a href="../pages/profile.php?username=<?=$comment['username']?>"><?=$comment['username']?>:<br></a>
                     </div>
                     <p><?=$comment['textC']?><br></p>
+                    <?php draw_votes($comment['id'],$comment['votes']); ?>
                     <p>Published: <?=$comment['dateC']?><br></p>
                     <p data-id="<?=$comment['id']?>" class="reply">Reply</p>
                 </div>      
@@ -146,7 +147,7 @@
         $downvote = "../img/utilities/downvotegrey.png";
     }
 ?>
-<script src="../javascript/votes.js" defer></script>
+
     <section id = "votesContent">
         <img class="up-vote"  data-id="<?=$idStory?>" src = "<?=$upvote?>" alt="Upvote" width="20" height="20">
         <a class="vote-number" data-id="<?=$idStory?>"><?=$num?></a>

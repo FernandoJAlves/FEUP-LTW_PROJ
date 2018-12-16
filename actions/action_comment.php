@@ -6,6 +6,10 @@ include_once('../database/dbUsers.php');
 include_once('../templates/story_templates.php');
 header('Content-Type: application/json');
 
+    if(!isset($_SESSION['username'])){
+        return;
+    }
+
     $text = $_POST['text'];
     $parentId = $_POST['id'];
 

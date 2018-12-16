@@ -15,6 +15,9 @@ downbuttons.forEach((button)=>{
 })
 
 function requestListener(button,event) {
+    if(this.responseText == ""){
+        return;
+    }
     let reply = JSON.parse(this.responseText);
     let str1 = ".vote-number[data-id='" + reply[0] + "']";
     let str2 = ".up-vote[data-id='" + reply[0] + "']";

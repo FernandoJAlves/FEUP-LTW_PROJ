@@ -64,6 +64,9 @@ function commentRequest(button, form) {
 
 
 function commentRequestListener(button, form, event) {
+    if(this.responseText == ""){
+        return;
+    }
     let parentId = button.getAttribute("data-id");
     let str = ".comments[data-id='" + parentId + "']";
     comments_sec = document.querySelector(str);
