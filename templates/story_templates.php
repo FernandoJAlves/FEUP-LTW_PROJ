@@ -7,7 +7,8 @@
         
     <section id="stories_content">
     <script src="../javascript/votes.js" defer></script>
-        <?php foreach ($stories as $story){ ?>
+        <?php if(count($stories) > 0){
+        foreach ($stories as $story){ ?>
         <div onclick="location.href='../pages/story.php?id=<?=$story['id']?>';">
             <a href="../pages/story.php?id=<?=$story['id']?>"> <?=$story['title']?> <br></a>
             <?php $imgPath = "../img/thumbnails/".$story['id'].".jpg";
@@ -28,6 +29,10 @@
             </div>
             <br>
         </div>      
+        <?php }} else { ?>
+        <div>
+        <a id="no_stories">There are no stories. Be the first one to publish one.</a>
+        </div>
         <?php } ?>
     </section>
 <?php } ?>

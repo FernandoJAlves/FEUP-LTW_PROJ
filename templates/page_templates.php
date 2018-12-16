@@ -84,7 +84,10 @@
               <label> Username: </label> <input type="text" name="name">
               <label> Password: </label> <input type="password" name="pass">
               <input type="submit" value="Sign In">
-          </form>      
+          </form>    
+          <?php if(isset($_SESSION['messages'])){?>
+          <div><label id="message"><?=$_SESSION['messages']?></label></div>
+          <?php }?>  
       </section>
 <?php } ?>
 
@@ -102,8 +105,8 @@
             <label> Confirm Password: </label> <input type="password" name="conf" required>
             <input type="submit" value="Sign Up">
         </form> 
-        <?php if(isset($_SESSION['messages']['type'])){?>
-          <div><label id="message"><?=$_SESSION['messages']['type']['content']?></label></div>
+        <?php if(isset($_SESSION['messages'])){?>
+          <div><label id="message"><?=$_SESSION['messages']?></label></div>
         <?php }?>
              
     </section>
