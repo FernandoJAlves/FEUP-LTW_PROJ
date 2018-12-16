@@ -6,6 +6,7 @@
   draw_header($_SESSION['username']);
   $user = getUser($_SESSION['username']);
   draw_edit_profile($user);
+  draw_aside();
   draw_footer();
 
 ?>

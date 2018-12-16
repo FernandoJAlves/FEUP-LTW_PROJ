@@ -212,11 +212,14 @@ body > header div#session > div a{
 
 body > section#home_content > article {
     padding: 1em;
-    margin-top: 1em;
-    margin-left: 1em;
-    margin-right: 1em;
+    margin: 1em 0 1em 1em;
+    background-color: white;
+    border-radius: 0.2em;
 } 
 
+body > section#home_content > article h1 {
+    margin: 0.5em 0;
+} 
 
 
 /* comments content */
@@ -228,7 +231,7 @@ body > section#home_content > article {
 }
 
 .comments  {
-    padding: 1em;
+    padding: 1em 0 1em 1em;
 } 
 
 .comments > div {

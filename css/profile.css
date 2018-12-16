@@ -2,13 +2,24 @@
 
 body > section#profile_content > article > a {
     margin: 1em;
-    color: #2909db;
+    color: black;
     text-decoration: none;
     grid-area: 6 / 1 / span 1 / span 1;
     text-align: center;
+    border-radius: 0.3em;
+    border-color: black;
+    border-style: solid;
+    padding: 0.5em 1em 0.5em 1em;
 }
 
-body > section#profile_content > article > h1 {
+#profile_content article a:hover{
+    background-color: black;
+    color: white;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+body > section#profile_content > article > h1, #profile_editor h1{
     background-color: rgb(75, 75, 75);
     border-bottom: 2px solid #2a9fff;
     border-radius: 0.2em;
@@ -98,3 +109,28 @@ body > section#profile_content > article > img{
     padding-top: 0.6em;
 }
 
+
+#profile_editor{
+    margin: 1em 0 1em 1em;
+    padding: 0;
+    background-color: white;
+    border-radius: 0.2em;
+}
+
+#profile_editor h1{
+    margin: 0;
+}
+
+#profile_editor p, #profile_editor img{
+    text-align: left;
+}
+
+#profile_editor form{
+    text-align: left;
+    padding: 1em;
+}
+
+#profile_editor form textarea{
+    min-width: 40em;
+    max-width: 40em;
+}
