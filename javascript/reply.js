@@ -19,6 +19,7 @@ function replyListener(event) {
         text.setAttribute("id", "commentform");
         text.setAttribute("rows", "10");
         text.setAttribute("placeholder", "Enter your text here...");
+        text.required = true;
         form.appendChild(text);
         let submitButton = document.createElement("input");
         submitButton.setAttribute("type", "submit");

@@ -12,6 +12,9 @@
 
   draw_header($username);
   $user = getUser($_GET['username']);
+  if($user == null){
+    header('Location: ../pages/not_found.php');
+  }
   draw_profile($user);
   draw_footer();
 

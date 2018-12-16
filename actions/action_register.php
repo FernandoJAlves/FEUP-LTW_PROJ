@@ -19,7 +19,7 @@
         $_SESSION['messages'][] = array('type' => 'error', 'content' => 'username field must not be empty');
         header('Location: ../pages/register.php');
     }
-    else if($pass != $conf){
+    else if($pass != $conf || $pass == null  || $pass = ""){
         $_SESSION['messages'][] = array('type' => 'error', 'content' => 'the value of password is different');
         header('Location: ../pages/register.php');
     }

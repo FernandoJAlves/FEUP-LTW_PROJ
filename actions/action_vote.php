@@ -3,10 +3,10 @@
     include_once('../database/dbQueries.php');
     include_once('../database/dbUsers.php');
     header('Content-Type: application/json');
-    if($_POST['username'] != "null"){
+    if(isset($_SESSION['username'])){
         $value = $_POST['value'];
         $storyId = $_POST['storyId'];
-        $username = $_POST['username'];
+        $username = $_SESSION['username'];
         $user = getUser($username);
         $userId = $user['idUser'];
         $ret = getVote($storyId,$userId);

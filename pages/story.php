@@ -13,6 +13,9 @@
   draw_header($username);
   $id = $_GET['id'];
   $story = getStory($id);
+  if($story == null){
+    header('Location: ../pages/not_found.php');
+  }
   draw_story($story);
   $comments = getComments($id);
   draw_comments($id,$comments);

@@ -61,6 +61,7 @@ body > header div#signup div button:first-of-type:hover, body > header div#signu
     background-color: black;
     color: white;
     transition: 0.4s;
+    cursor: pointer;
 }
 
 body > header div#signup > div a{
@@ -475,3 +476,6 @@ body header #searchBar #searchform input{
     padding-top: 0.6em;
 }
 
+textarea {
+    resize: none;
+ }

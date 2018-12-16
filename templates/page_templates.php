@@ -47,7 +47,7 @@
         <?php } ?>
         <div id="searchBar">
           <form id="searchform" action="../pages/search.php" method="post">
-            <input type="text" name="pattern">
+            <input type="text" name="pattern" required>
             <input type="submit" value="Search">
           </form>
         </div>
@@ -92,13 +92,14 @@
 <?php function draw_register() {
 
 ?>
+<script src="../javascript/register.js" defer></script>
     <section id="register_content">
         <form action="../actions/action_register.php" method="post">
-            <label> Username: </label> <input type="text" name="name">
-            <label> Age: </label> <input type="text" name="age">
-            <label> E-mail: </label> <input type="text" name="email">
-            <label> Password: </label> <input type="password" name="pass">
-            <label> Confirm Password: </label> <input type="password" name="conf">
+            <label> Username: </label> <input type="text" name="name" required>
+            <label> Age: </label> <input type="number" min="0" name="age" required>
+            <label> E-mail: </label> <input type="email" name="email" required>
+            <label> Password: </label> <input type="password" name="pass" required>
+            <label> Confirm Password: </label> <input type="password" name="conf" required>
             <input type="submit" value="Sign Up">
         </form>      
     </section>
@@ -223,7 +224,7 @@
 <script src="../javascript/image.js" defer></script>
 <section id="post_content">
         <form id="postform" action="../actions/action_add_story.php" method="post" enctype="multipart/form-data">
-            <div><input id="title_input" type="text" name="title" placeholder="Insert Title"><br></div>    
+            <div><input id="title_input" type="text" name="title" placeholder="Insert Title" required><br></div>    
             <img src = "" class="imgProfile">
             <p>Story Image: <Input class="imgInput" type="file" name="image"></p>
             <br>
@@ -233,5 +234,16 @@
             <input id="post_input" type="submit" value="Post">
         </form>      
         
+    </section>
+<?php } ?>
+
+
+<?php function draw_not_found() {
+
+?>
+    <section id="not_found_content">
+      <div>
+        <p>Error 404: page not found</p>
+      </div>       
     </section>
 <?php } ?>

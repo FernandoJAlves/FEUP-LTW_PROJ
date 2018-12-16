@@ -84,7 +84,7 @@
 
   function getComments($storyId) {
     $db = Database::instance()->db();
-    $cmd = 'SELECT Comment.idComment as id, Commentable.textC as textC, Commentable.dateC as dateC, GameItUser.username as username
+    $cmd = 'SELECT Comment.idComment as id, Commentable.textC as textC, Commentable.dateC as dateC, GameItUser.username as username, (Commentable.n_upvotes - Commentable.n_downvotes) as votes
     FROM Comment 
     LEFT JOIN Commentable ON Comment.idComment = Commentable.idCommentable
     LEFT JOIN GameItUser ON Commentable.idUser = GameItUser.idUser

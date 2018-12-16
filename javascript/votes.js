@@ -43,10 +43,9 @@ function requestListener(button,event) {
 function voteAJAXRequest(value,button,event){
     let request = new XMLHttpRequest();
     request.onload = requestListener.bind(request, button);
-    let username = button.getAttribute('data-user');
     request.open("post", "../actions/action_vote.php", true);
     request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    request.send(encodeForAjax({value: value, storyId: this, username: username}));
+    request.send(encodeForAjax({value: value, storyId: this}));
     
 }
 

@@ -148,8 +148,8 @@
 ?>
 <script src="../javascript/votes.js" defer></script>
     <section id = "votesContent">
-        <img class="up-vote"  data-id="<?=$idStory?>" data-user="<?=$username?>" src = "<?=$upvote?>" alt="Upvote" width="20" height="20">
+        <img class="up-vote"  data-id="<?=$idStory?>" src = "<?=$upvote?>" alt="Upvote" width="20" height="20">
         <a class="vote-number" data-id="<?=$idStory?>"><?=$num?></a>
-        <img class="down-vote"  data-id="<?=$idStory?>" data-user="<?=$username?>" src = "<?=$downvote?>" alt="Downvote" width="20" height="20">
+        <img class="down-vote"  data-id="<?=$idStory?>" src = "<?=$downvote?>" alt="Downvote" width="20" height="20">
     </section>      
 <?php } ?>
