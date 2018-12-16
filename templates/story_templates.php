@@ -79,7 +79,9 @@
         <section id="comments_content" data-id="<?=$id?>">
         <a>Comments: </a>
         <?php if(draw_comments_recursive($id,$comments)){ ?>
-            <a id="no_comments">This Story has no comments. Be the first one to comment.</a>
+            <div id="no_com">
+                <a id="no_comments">This Story has no comments. Be the first one to comment.</a>
+            </div>
         <?php } ?>  
         </section>
     </section>
