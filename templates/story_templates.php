@@ -30,8 +30,8 @@
             <br>
         </div>      
         <?php }} else { ?>
-        <div>
-        <a id="no_stories">There are no stories. Be the first one to publish one.</a>
+        <div id="no_stories">
+        <a>There are no stories. Be the first one to publish one.</a>
         </div>
         <?php } ?>
     </section>

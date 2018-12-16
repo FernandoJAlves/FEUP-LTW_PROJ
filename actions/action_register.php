@@ -16,11 +16,11 @@
 
     
     if($name == "" || $name == null){
-        $_SESSION['messages'][] = array('type' => 'error', 'content' => 'username field must not be empty');
+        $_SESSION['messages'] = 'username field must not be empty';
         die(header('Location: ../pages/register.php'));
     }
     else if($pass != $conf || $pass == null  || $pass = ""){
-        $_SESSION['messages'][] = array('type' => 'error', 'content' => 'the value of password is different');
+        $_SESSION['messages'] = 'the value of password is different';
         die(header('Location: ../pages/register.php'));
     }
 

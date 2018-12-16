@@ -124,6 +124,7 @@ body > header div#session > div a{
 	color: white;
     transition: 0.4s;
     /*border: 1px solid white;*/
+    cursor: pointer;
 }
 
 
@@ -161,16 +162,33 @@ body > header div#session > div a{
     cursor: pointer;
 } 
 
+#stories_content > div#no_stories {
+    background-color: white;
+    border: 0.4px solid white;
+    border-radius: 0.2em;
+    padding: 1em;
+    margin: 1em;
+    cursor: default;
+} 
+
 #stories_content > div:hover {
     border-radius: 0.2em;
     border: 0.4px solid #2a2f33;
     cursor: pointer;
 } 
 
+#stories_content > div#no_stories:hover {
+    cursor: default;
+} 
+
 #stories_content > div > a {
     text-decoration: none;
     color: black;
 }
+
+#stories_content > div#no_stories a{
+    font-size: 1em;
+} 
 
 #stories_content > div > a:first-of-type {
     font-size: 1.5em;

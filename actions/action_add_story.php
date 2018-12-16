@@ -12,7 +12,7 @@
 
     
     if($title == "" || $title == null || $story == null){
-        $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Text fields must not be empty');
+        $_SESSION['messages'] = 'Text fields must not be empty';
         header('Location: ../pages/create_post.php');
     }
 

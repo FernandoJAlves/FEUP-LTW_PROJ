@@ -16,7 +16,7 @@ header('Content-Type: application/json');
 
     
     if($text == null){
-        $_SESSION['messages'][] = array('type' => 'error', 'content' => 'comment text field must not be empty');
+        $_SESSION['messages'] = 'comment text field must not be empty';
     }
 
     else{
