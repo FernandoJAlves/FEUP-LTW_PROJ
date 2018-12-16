@@ -1,9 +1,10 @@
 <?php
-
+ob_start();
 include_once('../includes/session.php');
 include_once('../database/dbQueries.php');
 include_once('../database/dbUsers.php');
 include_once('../templates/story_templates.php');
+header('Content-Type: application/json');
 
     $text = $_POST['text'];
     $parentId = $_POST['id'];
@@ -23,8 +24,13 @@ include_once('../templates/story_templates.php');
         }
         $user = getUser($username);
         insertComment($text,$user['idUser'],$parentId);
+        $comments = getComments($parentId);
+        $num = count($comments);
         
-        draw_comments_recursive($parentId,getComments($parentId));
+        draw_comments_recursive($parentId,$comments);
+        $output = ob_get_clean();
+        echo json_encode(array($output,$num));
+
     }
 
 ?>
