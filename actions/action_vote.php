@@ -24,9 +24,9 @@
             insertVote($storyId,$userId,$value);
         }
         
-        $votes = getStory($storyId);
+        $votes = getPoints($storyId);
         
-        echo json_encode(array($storyId,$votes['votes'],$value));
+        echo json_encode(array($storyId,$votes['points'],$value));
         
         
     
