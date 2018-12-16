@@ -291,7 +291,7 @@ body > aside div#create_post > a{
     margin: 1em;
     padding: 1em;
     background-color: rgb(243, 243, 243);
-    border: 1px solid #2a9fff;
+    border: 1px solid #1f89e0;
     cursor: pointer;
     border-radius: 0.2em;
 }
@@ -302,14 +302,14 @@ body > aside div#create_post > a{
 }
 
 #links #home > a{
-    color: #2a9fff;
+    color: #1f89e0;
 }
 
 #links #top{
     margin: 1em;
     padding: 1em;
     background-color: rgb(243, 243, 243);
-    border: 1px solid #2a9fff;
+    border: 1px solid #1f89e0;
     cursor: pointer;
     border-radius: 0.2em;
 }
@@ -320,7 +320,7 @@ body > aside div#create_post > a{
 }
 
 #links #top > a{
-    color: #2a9fff;
+    color: #1f89e0;
 }
 
 /* footer */
