@@ -33,6 +33,6 @@ if($_FILES['image']['name'])
     }
 
 }
-    header('Location: ../pages/profile.php');
+    header('Location: ../pages/profile.php?username='.$username);
 
 ?>
