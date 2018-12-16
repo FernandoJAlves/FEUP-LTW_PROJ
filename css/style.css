@@ -272,7 +272,7 @@ body > section#home_content > article h1 {
     padding-top: 0.5em;
 }
 
-#comments_content div#no_com{
+#comments_content div#no_com, #register_content div{
     margin: 0em 2em 2em 2em;
 }
 
@@ -381,7 +381,11 @@ body > section > form * {
 }
 
 #register_content label#message{
-    /*text-align: center;*/
+    border: 2px solid red;
+    background-color: white;
+    padding: 1em;
+    border-radius: 0.3em;
+    margin: 0 0 0 10em;
 }
 
 /* Reply Button */
