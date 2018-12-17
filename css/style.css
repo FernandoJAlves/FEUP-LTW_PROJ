@@ -290,7 +290,7 @@ body > section#home_content > article h1 {
     padding-top: 0.5em;
 }
 
-#comments_content div#no_com, #register_content div{
+#comments_content div#no_com, #register_content div, #login_content div{
     margin: 0em 2em 2em 2em;
 }
 
@@ -398,7 +398,7 @@ body > section > form * {
     width: 20em;
 }
 
-#register_content label#message{
+#register_content label#message, #login_content label#message{
     border: 2px solid red;
     background-color: white;
     padding: 1em;
