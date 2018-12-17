@@ -23,6 +23,14 @@
         $_SESSION['messages'] = 'the value of password is different';
         die(header('Location: ../pages/register.php'));
     }
+    else if(strlen($pass) < 6){
+      $_SESSION['messages'] = 'Password should not have less than 6 characters';
+      die(header('Location: ../pages/register.php'));
+    }
+    else if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+      $_SESSION['messages'] = 'Invalid mail address';
+      die(header('Location: ../pages/register.php'));
+    }
 
     else{
       if(!checkUser($name)){
