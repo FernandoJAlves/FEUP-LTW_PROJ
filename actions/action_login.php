@@ -3,7 +3,7 @@
   include_once('../includes/session.php');
   $username = $_POST['name'];
   $password = $_POST['pass'];
-  if (checkUserPassword($username, $password)) {
+  if ($ret = checkUserPassword($username, $password)) {
     $_SESSION['username'] = $username;
     $_SESSION['messages'] = null;
     header('Location: ../pages/home.php');

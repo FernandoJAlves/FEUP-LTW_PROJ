@@ -5,7 +5,7 @@ conf.addEventListener('keyup',checkPassword);
 pass.addEventListener('keyup',checkPassword);
 
 function checkPassword(){
-    
+    console.log(pass.value);
     let section = document.querySelector("section[id='register_content']");
     let message  = document.querySelector("label[id='message']");
     if(conf.value != pass.value){

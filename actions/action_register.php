@@ -19,14 +19,13 @@
         $_SESSION['messages'] = 'username field must not be empty';
         die(header('Location: ../pages/register.php'));
     }
-    else if($pass != $conf || $pass == null  || $pass = ""){
+    else if($pass != $conf || $pass == null  || $pass == ""){
         $_SESSION['messages'] = 'the value of password is different';
         die(header('Location: ../pages/register.php'));
     }
 
     else{
       if(!checkUser($name)){
-
         $insert = insertUser($name,$pass,$email,$age);
          
         if($insert){

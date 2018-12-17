@@ -95,7 +95,7 @@
 <?php function draw_register() {
 
 ?>
-<script src="../javascript/register.js" defer></script>
+  <script src="../javascript/register.js" defer></script>
     <section id="register_content">
         <form action="../actions/action_register.php" method="post">
             <label> Username: </label> <input type="text" name="name" required>
